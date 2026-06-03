@@ -5,7 +5,7 @@ from typing import Any, List, Union
 from warnings import deprecated
 
 
-def input_to_file(*value, path, mode='w', end='', sep='\n') -> None:
+def ouput_to_file(path, *value, mode='w', end='', sep='\n') -> None:
     all_input_value: str = ''
     for input_value in value:
         all_input_value += input_value + sep
@@ -102,7 +102,6 @@ def ensure_dir(path: str) -> None:
 def find_files(
     directory: str, pattern: str = '*', recursive: bool = True
 ) -> List[str]:
-
     return glob.glob(
         directory.removesuffix('/') + '/' + pattern, recursive=recursive
     )

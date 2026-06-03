@@ -24,32 +24,34 @@ def lenth_limited_input(text, min, max, fallback: T = None) -> str | None | T:
 
 
 def choice_input(
-    title, value: Sequence, input_text: str
+    options: Sequence, title=None, input_text: str = '> '
 ) -> tuple[int, str] | tuple[None, None]:
     if title is not None:
         print(title)
-    for idx, opt in enumerate(value, start=1):
+    for idx, opt in enumerate(options, start=1):
         print(f'{idx}. {opt}')
 
     user_input = input(input_text)
     if user_input.isdigit():
         idx = int(user_input) - 1
-        if 0 <= idx < len(value):
-            return idx, value[idx]
-    if user_input in value:
-        idx = value.index(user_input)
+        if 0 <= idx < len(options):
+            return idx, options[idx]
+    if user_input in options:
+        idx = options.index(user_input)
         return idx, user_input
 
     return None, None
 
 
 def confirm(
-    text='', yes_str: list = ['yes'], no_str: list = ['no']
-) -> None | bool:
-    string = input(text + f'[{yes_str[0]}/{no_str[0]}] ')
-    if string in yes_str:
+    text='',
+    yes_str: str | tuple[str] = ('y',),
+    no_str: str | tuple[str] = ('n',),
+) -> bool | None:
+    string = input(text + f'[{yes_str[0]}/{no_str[0]}] ').lower().strip()
+    if string.startswith(yes_str):
         return True
-    elif string in no_str:
+    elif string.startswith(no_str):
         return False
     else:
         return None

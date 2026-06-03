@@ -180,7 +180,7 @@
   '''
   ```
 
-- `sum(*values)`
+- `deep_sum(*values)`
   
   增强求和函数，支持数字和列表混合。
 
@@ -189,7 +189,7 @@
   ```python
   import foxange
   
-  print(foxange.math.sum(1, 2, [3, 4], 5))
+  print(foxange.math.deep_sum(1, 2, [3, 4], 5))
   '''
   15
   '''
@@ -198,6 +198,9 @@
   如果你输入的数据中不会包含不可迭代对象建议使用 `sum(itertools.chain())` （内置的sum）
 
   ~~有点hyw了这个函数想把它删了但是不太敢——Cbscfe~~
+
+> [!CAUTION]
+> v0.5.0 时此函数从`sum()` 更名为 `deep_sum()`
 
 - `digit_separation(number: int) -> list`
   
@@ -655,14 +658,14 @@
 > [!CAUTION]
 > v0.5.0 时此函数从`numeric_input()` 更名为 `lenth_limited_input()`
 
-- `choice_input(title, value: Sequence, input_text: str) -> tuple[int, str] | tuple[None, None]:`
+- `choice_input(options: Sequence, title = None, input_text: str = "> ") -> tuple[int, str] | tuple[None, None]`
   
   输出一个类似于这个:
   ```
   title
   1. ***
   2. xxx
-  input>
+  input_text>
   ```
   菜单的函数，并返回一个`(参数在value中的位置, 这个值)`的元组
 
@@ -683,7 +686,10 @@
   ~~我都不知道这个东西有什么用~~  
   ~~你前面的东西更没用——Cbscfe~~
 
-- `confirm(text='', yes_str: list = ['yes'], no_str: list = ['no']) -> None | bool`:
+> [!CAUTION]
+> v0.5.0 时参数从 `title, value, input_text` 改为 `options, title, input_text`
+
+- `confirm(text='', yes_str: str | tuple[str] = ('y',), no_str: str | tuple[str] = ('n',)) -> bool | None`:
 
   一个类似于tkinter.askyesno的东西
 
@@ -703,7 +709,10 @@
 > 在`[]`中,他只会显示`yes_str`和`no_str`的第一项,如果是`no_str`的则返回`True`,如果是`yes_str`的,返回`False`,什么都不是返回`None`,**`yes_str`会比`no_str`优先判断!**
 
 > [!NOTE]
-> v0.5.0 略微调整了输出格式
+> v0.5.0 略微调整了输出格式，并会对输入进行`.lower().strip()`
+
+> [!CAUTION]
+> v0.5.0 时由于改为使用`.startswith()`判断字符串，传入的参数不能再为原来的列表而为元组
 
 ## `list_proce.py`
 
@@ -787,7 +796,7 @@
 
 ## `file.py`
 
-- `input_to_file(*value, path, mode='w', end='', sep='\n') -> None`
+- `ouput_to_file(path, *value, mode='w', end='', sep='\n') -> None`
   
   将传入的多个字符串按 `sep` 拼接，末尾加上 `end`，写入指定文件。支持写入模式（`'w'` 覆写，`'a'` 追加）。
 
@@ -796,12 +805,18 @@
   ```python
   import foxange
   
-  foxange.file.input_to_file("hello", "world", path="test.txt", sep=",", end="!")
+  foxange.file.ouput_to_file("test.txt", "hello", "world", sep=",", end="!")
   # 文件内容: hello,world!
   '''
   (无返回值，文件被写入)
   '''
   ```
+
+> [!CAUTION]
+> v0.5.0 时参数顺序从 `*value, path, ...` 改为 `path, *value, ...`
+
+> [!CAUTION]
+> v0.5.0 时此函数从 `input_to_file()` 更名为 `ouput_to_file()`
 
 - `read_lines(path: str, strip_newline: bool = True, encoding: str = 'utf-8') -> List[str]`
   

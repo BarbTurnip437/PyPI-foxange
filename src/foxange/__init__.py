@@ -5,10 +5,10 @@ __all__ = [
     'input',
     'list_proce',
     'math',
-    'input_to_file',
+    'ouput_to_file',
     'collect_input',
     'unique',
-    'sum',
+    'deep_sum',
 ]
 
 __version__ = '0.5.0'
@@ -16,10 +16,10 @@ __version__ = '0.5.0'
 from warnings import deprecated
 
 from . import file, input, list_proce, math
-from .file import input_to_file
+from .file import ouput_to_file
 from .input import collect_input
 from .list_proce import unique
-from .math import sum
+from .math import deep_sum
 
 
 # 为向下兼容而保留，不过说实话删了更好

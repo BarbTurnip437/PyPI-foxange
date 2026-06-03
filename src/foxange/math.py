@@ -53,16 +53,10 @@ def root(number: int, inx: int = 2) -> float:
     return math.pow(number, (1 / inx))
 
 
-def factors(number: int, key=lambda _: True, recur=False) -> list[int]:
-    ans: list = []
+def factors(number: int, recur=False) -> list[int]:
     limit = int(root(number)) + 1
-    for i in range(1, limit):
-        if number % i == 0:
-            if key(i):
-                ans.append(i)
-            j = number // i
-            if (i != j and key(j)) or (recur and key(j)):
-                ans.append(j)
+    ans = [i for i in range(1, limit) if number % i == 0]
+    ans.extend([j for i in ans if i != (j := number // i) or recur])
     return ans
 
 
@@ -81,7 +75,7 @@ def prime_factors(n: int) -> list[int]:
     return factors
 
 
-def sum(*value) -> int:
+def deep_sum(*value) -> int:
     ans: int = 0
     for i in value:
         if isinstance(i, Complex):
@@ -111,11 +105,11 @@ def is_deficit(number: int) -> bool:
 
 
 def _sum_factor_without_self(n):
-    return sum(factors(n)[:-1])
+    return sum(factors(n)) - n
 
 
 def _sum_factor_without_1_and_self(n):
-    return sum(factors(n)[1:-1]) - n - 1
+    return sum(factors(n)) - n - 1
 
 
 def is_amicable_pair(number1: int, number2: int) -> bool:
@@ -135,7 +129,7 @@ def is_smith(number: int) -> bool:
     if number <= 1 or is_prime(number):
         return False
     factors = prime_factors(number)
-    sum_factors_digits = sum(digit_separation(f) for f in factors)
+    sum_factors_digits = sum(sum(digit_separation(f)) for f in factors)
     sum_original_digits = sum(digit_separation(number))
     return sum_factors_digits == sum_original_digits
 
@@ -155,7 +149,7 @@ def is_self_power(number: int) -> bool:
     digits = digit_separation(number)
     size = len(digits)
 
-    return __builtins__.sum(digit**size for digit in digits) == number
+    return sum(digit**size for digit in digits) == number
 
 
 def is_narcissistic(number: int) -> bool:
@@ -163,8 +157,8 @@ def is_narcissistic(number: int) -> bool:
 
 
 def is_palindrome(number: int) -> bool:
-    temp = digit_separation(number)
-    return temp == temp[::-1]
+    number_str = str(number)
+    return number_str == number_str[::-1]
 
 
 def is_reversible_prime(number: int) -> bool:
