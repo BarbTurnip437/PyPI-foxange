@@ -28,8 +28,8 @@
 
   显示 foxange 的 Github 仓库地址
 
-  > [!WARNING]
-  > v0.5.0 被废弃，请使用 `print(foxange.__doc__)` 或 `help(foxange)`
+> [!WARNING]
+> v0.5.0 被废弃，请使用 `print(foxange.__doc__)` 或 `help(foxange)`
 
 
 - `version() -> str`
@@ -47,11 +47,11 @@
   '0.4.0'
   ```
 
-  > [!IMPORTANT]
-  > v0.4.0 开始这个函数不会输出`version : {version}` 文字了
+> [!IMPORTANT]
+> v0.4.0 开始这个函数不会输出`version : {version}` 文字了
 
-  > [!WARNING]
-  > v0.5.0 被废弃，请使用 `__version__`
+> [!WARNING]
+> v0.5.0 被废弃，请使用 `__version__`
 
 ------
 
@@ -74,9 +74,9 @@
   '''
   ```
 
-  > [!IMPORTANT]
-  > v0.5.0 优化了这个函数  
-  > 在判断1000333是不是质数的性能测试中新版本比原版本快了1437倍（卧槽这个数字真的不是乱填的真的测出来是这个数）
+> [!IMPORTANT]
+> v0.5.0 优化了这个函数  
+> 在判断1000333是不是质数的性能测试中新版本比原版本快了1437倍（卧槽这个数字真的不是乱填的真的测出来是这个数）
 
 - `is_composite_number(number: int) -> bool`
   
@@ -110,8 +110,8 @@
   '''
   ```
 
-  > [!WARNING]
-  > v0.5.0 被废弃，请使用 `number1 ** number2` 或 `math.pow()`
+> [!WARNING]
+> v0.5.0 被废弃，请使用 `number1 ** number2` 或 `math.pow()`
 
 - `radical_sign(number: int, inx: int = 2) -> float`
   
@@ -137,8 +137,8 @@
   - `key`：过滤函数，只有 `key(i)` 为 `True` 的因子才加入。
   - `recur`：若为 `True`，平方根因子会被添加两次（`i` 和 `j` 都加入）。
   
-    > [!TIP]
-    > `recur=True` 会使完全平方数的平方根因子出现两次。
+> [!TIP]
+> `recur=True` 会使完全平方数的平方根因子出现两次。
   
   **代码示例**：
 
@@ -415,8 +415,8 @@
   '''
   ```
 
-  > [!WARNING]
-  > v0.5.0 被废弃，请使用 `math.gcd()`
+> [!WARNING]
+> v0.5.0 被废弃，请使用 `math.gcd()`
 
 - `lcm(a: int, b: int) -> int`
   
@@ -433,8 +433,8 @@
   '''
   ```
 
-  > [!WARNING]
-  > v0.5.0 被废弃，请使用 `math.lcm()`
+> [!WARNING]
+> v0.5.0 被废弃，请使用 `math.lcm()`
 
 - `factorial(n: int) -> int`
   
@@ -466,8 +466,8 @@
   '''
   ```
   
-  > [!WARNING]
-  > v0.5.0 被废弃，请使用 `int(math.sqrt())`
+> [!WARNING]
+> v0.5.0 被废弃，请使用 `int(math.sqrt())`
 
 - `reverse_int(n: int) -> int`
   
@@ -548,8 +548,8 @@
   '''
   ```
 
-  > [!WARNING]
-  > v0.5.0 被废弃，请使用 `math.comb()`
+> [!WARNING]
+> v0.5.0 被废弃，请使用 `math.comb()`
 
 ## `input.py`
 
@@ -607,11 +607,11 @@
   '''
   ```
 
-  > [!IMPORTANT]
-  > v0.5.0 时 `notvalid` 参数更名为 `fallback`
+> [!IMPORTANT]
+> v0.5.0 时 `notvalid` 参数更名为 `fallback`
 
-  > [!CAUTION]
-  > v0.5.0 时此函数从`numeric_input()` 更名为 `lenth_limited_input()`
+> [!CAUTION]
+> v0.5.0 时此函数从`numeric_input()` 更名为 `lenth_limited_input()`
 
 - `choice_input(title, value: Sequence, input_text: str) -> tuple[int, str] | tuple[None, None]:`
   
@@ -657,11 +657,11 @@
   '''
   ```
 
-  > [!TIP]
-  > 在`[]`中,他只会显示`yes_str`和`no_str`的第一项,如果是`no_str`的则返回`True`,如果是`yes_str`的,返回`False`,什么都不是返回`None`,**`yes_str`会比`no_str`优先判断!**
+> [!TIP]
+> 在`[]`中,他只会显示`yes_str`和`no_str`的第一项,如果是`no_str`的则返回`True`,如果是`yes_str`的,返回`False`,什么都不是返回`None`,**`yes_str`会比`no_str`优先判断!**
 
-  > [!NOTE]
-  > v0.5.0 略微调整了输出格式
+> [!NOTE]
+> v0.5.0 略微调整了输出格式
 
 ## `list_proce.py`
 
@@ -680,9 +680,9 @@
   '''
   ```
 
-  > [!WARNING]
-  > v0.5.0 被废弃，请使用 `filter()`  
-  > 请注意 `filter()` 的过滤逻辑上与此函数相反
+> [!WARNING]
+> v0.5.0 被废弃，请使用 `filter()`  
+> 请注意 `filter()` 的过滤逻辑上与此函数相反
 
 - `unique(value: list) -> list`
 
@@ -874,8 +874,8 @@
   '''
   ```
 
-  > [!NOTE]
-  > v0.5.0 修复了显示的单位错误的使用了 KB/MB/GB... 而不是 KiB/MiB/GiB 的bug
+> [!NOTE]
+> v0.5.0 修复了显示的单位错误的使用了 KB/MB/GB... 而不是 KiB/MiB/GiB 的bug
 
 - `ensure_dir(path: str) -> None`
 
@@ -892,8 +892,8 @@
   '''
   ```
 
-  > [!WARNING]
-  > v0.5.0 被废弃，请使用 `os.makedirs(path, exist_ok=True)` 或 `pathlib.Path(path).mkdir(parents=True, exist_ok=True)`
+> [!WARNING]
+> v0.5.0 被废弃，请使用 `os.makedirs(path, exist_ok=True)` 或 `pathlib.Path(path).mkdir(parents=True, exist_ok=True)`
 
 - `atomic_write(path: str, data: Union[str, bytes], mode: str = 'w', encoding: str = 'utf-8') -> None`
   原子写入：先写入临时文件，再替换目标文件，避免写入中途崩溃导致文件损坏。
@@ -927,9 +927,9 @@
   '''
   ```
 
-  > [!WARNING]
-  > v0.5.0 被废弃，请使用 `glob.glob(directory.removesuffix('/') + '/' + pattern, recursive=recursive)` 或 `pathlib.Path(directory).glob("**/" + pattern if recursive else pattern)`  
-  > （我服了硬套这个函数的输入格式搞的代码会非常诡异，反正不要硬套就对了）
+> [!WARNING]
+> v0.5.0 被废弃，请使用 `glob.glob(directory.removesuffix('/') + '/' + pattern, recursive=recursive)` 或 `pathlib.Path(directory).glob("**/" + pattern if recursive else pattern)`  
+> （我服了硬套这个函数的输入格式搞的代码会非常诡异，反正不要硬套就对了）
 
 ---
 
