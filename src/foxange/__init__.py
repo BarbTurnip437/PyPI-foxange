@@ -1,34 +1,35 @@
-from .input import collect_input
-from .math import sum
+"""Github repo: https://github.com/foxange-org/PyPI-foxange"""
+
+from warnings import deprecated
+
+from . import file, input, list_proce, math
 from .file import input_to_file
+from .input import collect_input
 from .list_proce import unique
-from . import input 
-from . import list_proce   
-from . import file
-from . import math
+from .math import sum
 
 __all__ = [
-    "collect_input",
-    "sum",
-    "input_to_file",
-    "unique"
+    'file',
+    'input',
+    'list_proce',
+    'math',
+    'input_to_file',
+    'collect_input',
+    'unique',
+    'sum',
 ]
 
-__version__ = '0.4.0'
 
-def version()->str:
+__version__ = '0.5.0'
+
+
+# 为向下兼容而保留，不过说实话删了更好
+# 毕竟现在还在 0.x.x 的版本号，但是我懒得删
+@deprecated('Use __version__ instead')
+def version() -> str:
     return __version__
 
-def get_help()->None:
-    print("plase read GITBUH's foxange-org user 's 'PyPI-foxange'")
-    return 
 
-
-if __name__ == "__main__":
-    print("this is a Python 's other mod,if you want use there,plasece use 'import foxange'or 'from foxange import ...'")
-    print("down is test the other mod 's text:")
-    
-    from os import system
-    
-    print("input.py:")
-    system("python input.py")
+@deprecated('Use print(foxange.__doc__) or help(foxange) instead')
+def get_help() -> None:
+    print(__doc__)

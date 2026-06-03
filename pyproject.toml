@@ -4,14 +4,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "foxange"
-version = "0.4.0"
+version = "0.5.0"
 description = "A custom Python module collection"
-authors = [
-    { name = "foxange", email = "slcfox@foxmail.com" }
-]
+authors = [{ name = "foxange", email = "slcfox@foxmail.com" }]
 license = { text = "MIT" }
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.11"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
@@ -22,5 +20,29 @@ classifiers = [
 dependencies = []
 
 [tool.setuptools.packages.find]
-where = ["src"]          # 在 src 目录下查找包
-include = ["foxange*"]   # 打包 foxange 包及其子包（如果有）
+where = ["src"]        # 在 src 目录下查找包
+include = ["foxange*"] # 打包 foxange 包及其子包（如果有）
+
+[tool.ruff]
+unsafe-fixes = true
+
+[tool.ruff.lint]
+fixable = ["ALL"]
+select = [
+    "E",
+    "W",
+    "F",
+    "N",
+    "S",
+    "TRY004",
+    "SIM",
+    "FLY",
+    "LOG",
+    "ARG",
+    "PD",
+    "NPY",
+    "PERF",
+]
+
+[tool.ruff.format]
+quote-style = "single"

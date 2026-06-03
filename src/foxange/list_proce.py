@@ -1,38 +1,46 @@
-def remove(value:list,condition=None)->list:
-    return_list:list = []
-    for _ in value:
-        if condition is None:
-            return_list.append(_)
-        elif not condition(_):
-            return_list.append(_)
-    return return_list
+from collections.abc import Callable, Iterable
+from warnings import deprecated
 
-def unique(value:list):
-    seen = set()
-    result = []
-    for item in value:
-        if item not in seen:
-            seen.add(item)
-            result.append(item)
-    return result
 
-def rotate(value:list,inx:int)->list:
-    n = len(value)
-    shift = inx % n
+@deprecated(
+    'Use filter() instead, '
+    'beware that filter() behaves opposite as this function '
+    'and returns an iterable instead of a list'
+)
+def remove(value: list, condition: Callable | None = None) -> list:
+    # 这个函数太诡异了我要回家
+    if condition is None:
+        return value
+    return [*filter(lambda x: not condition(x), value)]
+
+
+# @deprecated(
+#     'If you want to create a container with no overlapping items '
+#     'you should use a set'
+# )
+def unique(value: list) -> list:
+    return list(set(value))
+
+
+def rotate(value: list, inx: int) -> list:
+    value_len = len(value)
+    shift = inx % value_len
     return value[-shift:] + value[:-shift] if shift != 0 else value[:]
 
-def spread(*args):
+
+def spread(*args) -> tuple:
     result = []
     for arg in args:
-        if isinstance(arg, (list, tuple)):
+        if isinstance(arg, Iterable):
             result.extend(arg)
         else:
             result.append(arg)
     return tuple(result)
 
-if __name__ == "__main__":
-    print("this is a test this file 's def , if you want use , no open the file,use from foxange import list_proce")
-    print("down is tset:")
-    
-    print("remove:value->[[1,2,3,4,5],lambda x:x%2==0]")
-    print("return value:", remove([1,2,3,4,5],lambda x:x%2==0))
+
+if __name__ == '__main__':
+    print('test remove:')
+    print(f'return value: {remove([1, 2, 3, 4, 5], lambda x: x % 2 == 0) = }')
+    print()
+    print('test unique:')
+    print(f'return value: {unique([1, 2, 3, 1, 2]) = }')
