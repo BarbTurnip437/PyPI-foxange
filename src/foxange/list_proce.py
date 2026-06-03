@@ -1,4 +1,4 @@
-from collections.abc import Callable, Iterable, Container
+from collections.abc import Callable, Collection
 from warnings import deprecated
 
 
@@ -31,7 +31,7 @@ def rotate(value: list, inx: int) -> list:
 def spread(*args) -> tuple:
     result = []
     for arg in args:
-        if isinstance(arg, Container) and isinstance(arg, Iterable):
+        if isinstance(arg, Collection):
             result.extend(arg)
         else:
             result.append(arg)
