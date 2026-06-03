@@ -57,7 +57,7 @@ def confirm(
 
 if __name__ == '__main__':
     print('test sanitize_input:')
-    print(f"return value: {sanitize_input('hello!', '!', 'o') = }")
+    print(f"return value: {filter_string('hello!', '!', 'o') = }")
     print()
     print('test collect_input:')
     print(f"return value: {collect_input('1> ', '2> ') = }")
