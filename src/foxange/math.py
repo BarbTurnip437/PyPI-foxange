@@ -50,7 +50,7 @@ def is_composite_number(number: int) -> bool:
 
 
 def radical_sign(number: int, inx: int = 2) -> float:
-    return pow(number, (1 / inx))
+    return math.pow(number, (1 / inx))
 
 
 def factor(number: int, key=lambda _: True, recur=False) -> list[int]:
@@ -156,7 +156,7 @@ def is_self_power_number(number: int) -> bool:
     size = len(digits)
     temp = 0
     for i in digits:
-        temp += pow(i, size)
+        temp += math.pow(i, size)
     return temp == number
 
 
@@ -185,12 +185,7 @@ def factorial(n: int) -> int:
 
 def reverse_int(n: int) -> int:
     sign = -1 if n < 0 else 1
-    n = abs(n)
-    rev = 0
-    while n:
-        rev = rev * 10 + n % 10
-        n //= 10
-    return sign * rev
+    return sign * int(str(abs(n))[::-1])
 
 
 def bin_to_int(n: str) -> int:

@@ -1,9 +1,9 @@
 from typing import Sequence, TypeVar
 
 
-def sanitize_input(text: str, *strings: str) -> str:
+def filter_string(text: str, *strings: str, replace_value: str = '') -> str:
     for string in strings:
-        text = text.replace(string, '')
+        text = text.replace(string, replace_value)
     return text
 
 

@@ -48,7 +48,7 @@
   ```
 
 > [!IMPORTANT]
-> v0.4.0 开始这个函数不会输出`version : {version}` 文字了
+> v0.4.0 开始这个函数不会输出 `version : {version}` 文字了
 
 > [!WARNING]
 > v0.5.0 被废弃，请使用 `__version__`
@@ -75,8 +75,8 @@
   ```
 
 > [!IMPORTANT]
-> v0.5.0 优化了这个函数  
-> 在判断1000333是不是质数的性能测试中新版本比原版本快了1437倍（卧槽这个数字真的不是乱填的真的测出来是这个数）
+> v0.5.0 极大的优化了这个函数  
+> 在判断1000333是不是质数的性能测试中新版本是原版本的1437倍（卧槽这个数字真的不是乱填的真的测出来是这个数）
 
 - `is_composite_number(number: int) -> bool`
   
@@ -570,20 +570,26 @@
   '''
   ```
 
-- `sanitize_input(text: str, *strings: str) -> str`
+- `filter_string(text: str, *strings: str, replace_value: str = '') -> str`
   
-  删除`text`字符串中所有的`*strings`子字符串
+  将`text`字符串中所有的`*strings`子字符串替换为`replace_value`
 
   **代码示例**：
 
   ```python
   import foxange
 
-  print(foxange.input.sanitize_input('hello world!', 'h', 'o'))
+  print(foxange.input.filter_string('hello world!', 'h', 'o'))
   '''
   ell wrld!
   '''
   ```
+
+> [!NOTE]
+> v0.5.0 增加了一个关键字参数 `replace_value` 表示要替换为的值
+
+> [!CAUTION]
+> v0.5.0 时此函数从 `sanitize_input()` 更名为 `filter_string()`
 
   **注意** : 在让这个函数导入`text` 形参时,务必使用:`text=...`否则会有问题
 
