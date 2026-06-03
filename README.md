@@ -1,9 +1,9 @@
-## foxange ，一个python第三方库😊
+## foxange ，一个python第三方库
 
 ### 目录
 
 - 下载
-- 如何使用函数和函数的特殊注意🤔
+- 如何使用函数和函数的特殊注意
   - `__init__.py`
   - `math.py`
   - `input.py`
@@ -20,7 +20,7 @@
 
 ---
 
-## 如何使用函数和函数的特殊注意🤔
+## 如何使用函数和函数的特殊注意
 
 ### `__init__.py`
 
@@ -626,11 +626,8 @@
   '''
   ```
 
-> [!NOTE]
-> v0.5.0 增加了一个关键字参数 `replace_value` 表示要替换为的值
-
 > [!CAUTION]
-> v0.5.0 时此函数从 `sanitize_input()` 更名为 `filter_string()`
+> v0.5.0 增加了一个关键字参数 `replace_value` 表示要替换为的值，并从 `sanitize_input()` 更名为 `filter_string()`
 
 - `lenth_limited_input[T](text, min, max, fallback: T = None) -> str | None | T`
 
@@ -652,11 +649,8 @@
   '''
   ```
 
-> [!IMPORTANT]
-> v0.5.0 时 `notvalid` 参数更名为 `fallback`
-
 > [!CAUTION]
-> v0.5.0 时此函数从`numeric_input()` 更名为 `lenth_limited_input()`
+> v0.5.0 时 `notvalid` 参数更名为 `fallback`，并从 `numeric_input()` 更名为 `lenth_limited_input()`
 
 - `choice_input(options: Sequence, title = None, input_text: str = "> ") -> tuple[int, str] | tuple[None, None]`
   
@@ -673,7 +667,7 @@
 
   ```python
   import foxange
-  print(foxange.input.choive_input("菜单", ['hi','bye'], "选择> "))
+  print(foxange.input.choive_input(['hi','bye'], "菜单", "选择> "))
   '''
   菜单
   1. hi
@@ -693,6 +687,8 @@
 
   一个类似于tkinter.askyesno的东西
 
+  **注意** : 在`[]`中,他只会显示`yes_str`和`no_str`的第一项,如果是`no_str`的则返回`True`,如果是`yes_str`的,返回`False`,什么都不是返回`None`,**`yes_str`会比`no_str`优先判断!**
+
   **代码示例**：
 
   ```python
@@ -705,14 +701,8 @@
   '''
   ```
 
-> [!TIP]
-> 在`[]`中,他只会显示`yes_str`和`no_str`的第一项,如果是`no_str`的则返回`True`,如果是`yes_str`的,返回`False`,什么都不是返回`None`,**`yes_str`会比`no_str`优先判断!**
-
-> [!NOTE]
-> v0.5.0 略微调整了输出格式，并会对输入进行`.lower().strip()`
-
 > [!CAUTION]
-> v0.5.0 时由于改为使用`.startswith()`判断字符串，传入的参数不能再为原来的列表而为元组
+> v0.5.0 略微调整了输出格式，并会对输入进行`.lower().strip()`。并由于改为使用`.startswith()`判断字符串，传入的参数不能再为原来的列表而为元组
 
 ## `list_proce.py`
 
@@ -813,10 +803,7 @@
   ```
 
 > [!CAUTION]
-> v0.5.0 时参数顺序从 `*value, path, ...` 改为 `path, *value, ...`
-
-> [!CAUTION]
-> v0.5.0 时此函数从 `input_to_file()` 更名为 `ouput_to_file()`
+> v0.5.0 时参数顺序从 `*value, path, ...` 改为 `path, *value, ...`，并从 `input_to_file()` 更名为 `ouput_to_file()`
 
 - `read_lines(path: str, strip_newline: bool = True, encoding: str = 'utf-8') -> List[str]`
   
@@ -953,6 +940,7 @@
 > v0.5.0 被废弃，请使用 `os.makedirs()` 或 `pathlib.Path().mkdir()`
 
 - `atomic_write(path: str, data: Union[str, bytes], mode: str = 'w', encoding: str = 'utf-8') -> None`
+
   原子写入：先写入临时文件，再替换目标文件，避免写入中途崩溃导致文件损坏。
 
   **注意**：Windows 下若目标文件被其他进程打开，`os.replace` 可能失败。
@@ -972,6 +960,7 @@
 > v0.5.0 彻底移除此一开始就不能运行起来的函数，这是AI写的吗IDE都爆红了没看到？完全不知道这个函数的用意
 
 - `find_files(directory: str, pattern: str = '*', recursive: bool = True) -> List[str]`
+
   查找目录下匹配通配符 `pattern` 的文件，返回相对路径列表。支持 `*` 和 `?`（`fnmatch` 规则）。
 
   **代码示例**：
