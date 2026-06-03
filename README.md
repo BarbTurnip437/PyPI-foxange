@@ -78,7 +78,7 @@
 > v0.5.0 极大的优化了这个函数  
 > 在判断1000333是不是质数的性能测试中新版本是原版本的1437倍（卧槽这个数字真的不是乱填的真的测出来是这个数）
 
-- `is_composite_number(number: int) -> bool`
+- `is_composite(number: int) -> bool`
   
   判断一个整数是否为合数（大于1且不是素数）。
 
@@ -87,13 +87,16 @@
   ```python
   import foxange
   
-  print(foxange.math.is_composite_number(9))
-  print(foxange.math.is_composite_number(2))
+  print(foxange.math.is_composite(9))
+  print(foxange.math.is_composite(2))
   '''
   True
   False
   '''
   ```
+
+> [!CAUTION]
+> v0.5.0 时此函数从`is_composite_number()` 更名为 `is_composite()`
 
 - `pow(number1: float, number2: float) -> float`
   
@@ -140,8 +143,7 @@
   - `key`：过滤函数，只有 `key(i)` 为 `True` 的因子才加入。
   - `recur`：若为 `True`，平方根因子会被添加两次（`i` 和 `j` 都加入）。
   
-> [!TIP]
-> `recur=True` 会使完全平方数的平方根因子出现两次。
+  **注意** : `recur=True` 会使完全平方数的平方根因子出现两次。
   
   **代码示例**：
 
@@ -232,7 +234,7 @@
 > [!CAUTION]
 > v0.5.0 时此函数从`is_perfect_number()` 更名为 `is_perfect()`
 
-- `is_excess_number(number: int) -> bool`
+- `is_excess(number: int) -> bool`
   
   判断是否为过剩数（真因子和大于自身）。
 
@@ -241,11 +243,14 @@
   ```python
   import foxange
   
-  print(foxange.math.is_excess_number(12))
+  print(foxange.math.is_excess(12))
   '''
   True
   '''
   ```
+
+> [!CAUTION]
+> v0.5.0 时此函数从`is_excess_number()` 更名为 `is_excess()`
 
 - `is_deficit(number: int) -> bool`
   
@@ -262,7 +267,7 @@
   '''
   ```
 
-- `is_amicable_numbers(number1: int, number2: int) -> bool`
+- `is_amicable_pair(number1: int, number2: int) -> bool`
   
   判断两个数是否为亲和数（彼此的真因子和相等）。
 
@@ -271,13 +276,16 @@
   ```python
   import foxange
   
-  print(foxange.math.is_amicable_numbers(220, 284))
+  print(foxange.math.is_amicable_pair(220, 284))
   '''
   True
   '''
   ```
 
-- `is_engagements_number(number1: int, number2: int) -> bool`
+> [!CAUTION]
+> v0.5.0 时此函数从`is_amicable_numbers()` 更名为 `is_amicable_pair()`
+
+- `is_betrothed_pair(number1: int, number2: int) -> bool`
   
   判断两个数是否为订婚数（除去1和自身的真因子和相等）。
 
@@ -286,13 +294,16 @@
   ```python
   import foxange
   
-  print(foxange.math.is_engagements_number(48, 75))
+  print(foxange.math.is_betrothed_pair(48, 75))
   '''
   True
   '''
   ```
 
-- `is_smith_number(number: int) -> bool`
+> [!CAUTION]
+> v0.5.0 时此函数从`is_engagements_number()` 更名为 `is_betrothed_pair()`
+
+- `is_smith(number: int) -> bool`
   
   判断是否为 Smith 数（合数，各位数字之和等于所有质因子（含重复）的各位数字之和）。
 
@@ -301,15 +312,18 @@
   ```python
   import foxange
   
-  print(foxange.math.is_smith_number(4))
-  print(foxange.math.is_smith_number(22))
+  print(foxange.math.is_smith(4))
+  print(foxange.math.is_smith(22))
   '''
   True
   False
   '''
   ```
 
-- `is_niven_number(number: int) -> bool`
+> [!CAUTION]
+> v0.5.0 时此函数从`is_smith_number()` 更名为 `is_smith()`
+
+- `is_harshad(number: int) -> bool`
   
   判断是否为 Harshad 数（能被其各位数字之和整除）。
 
@@ -318,13 +332,16 @@
   ```python
   import foxange
   
-  print(foxange.math.is_niven_number(18))
+  print(foxange.math.is_harshad(18))
   '''
   True
   '''
   ```
 
-- `is_moran_number(number: int) -> bool`
+> [!CAUTION]
+> v0.5.0 时此函数从`is_niven_number()` 更名为 `is_harshad()`
+
+- `is_moran(number: int) -> bool`
   
   判断是否为 Moran 数（Harshad 数，且商为素数）。
 
@@ -333,13 +350,16 @@
   ```python
   import foxange
   
-  print(foxange.math.is_moran_number(18))
-  print(foxange.math.is_moran_number(27))
+  print(foxange.math.is_moran(18))
+  print(foxange.math.is_moran(27))
   '''
   False
   True
   '''
   ```
+
+> [!CAUTION]
+> v0.5.0 时此函数从`is_moran_number()` 更名为 `is_moran()`
 
 - `is_self_power(number: int) -> bool`
   
@@ -361,7 +381,7 @@
 > [!CAUTION]
 > v0.5.0 时此函数从`is_self_power_number()` 更名为 `is_self_power()`
 
-- `is_narcissus_number(number: int) -> bool`
+- `is_narcissistic(number: int) -> bool`
   
   判断是否为水仙花数（三位自幂数）。
 
@@ -370,13 +390,16 @@
   ```python
   import foxange
   
-  print(foxange.math.is_narcissus_number(153))
-  print(foxange.math.is_narcissus_number(9474))
+  print(foxange.math.is_narcissistic(153))
+  print(foxange.math.is_narcissistic(9474))
   '''
   True
   False
   '''
   ```
+
+> [!CAUTION]
+> v0.5.0 时此函数从`is_narcissus_number()` 更名为 `is_narcissistic()`
 
 - `is_palindrome(number: int) -> bool`
   
@@ -605,8 +628,6 @@
 
 > [!CAUTION]
 > v0.5.0 时此函数从 `sanitize_input()` 更名为 `filter_string()`
-
-  **注意** : 在让这个函数导入`text` 形参时,务必使用:`text=...`否则会有问题
 
 - `lenth_limited_input[T](text, min, max, fallback: T = None) -> str | None | T`
 

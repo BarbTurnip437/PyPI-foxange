@@ -42,7 +42,7 @@ def is_prime(number: int) -> bool:
     return all(number % i != 0 for i in range(3, int(sqrt(number)), 2))
 
 
-def is_composite_number(number: int) -> bool:
+def is_composite(number: int) -> bool:
     if number <= 1:
         return False
 
@@ -95,12 +95,12 @@ def digit_separation(number: int) -> list[int]:
     return [int(digit) for digit in str(number)]
 
 
-def is_perfect_number(number: int) -> bool:
+def is_perfect(number: int) -> bool:
     number2 = sum(factors(number))
     return number2 == 2 * number
 
 
-def is_excess_number(number: int) -> bool:
+def is_excess(number: int) -> bool:
     number2 = sum(factors(number))
     return number2 > 2 * number
 
@@ -118,20 +118,20 @@ def _sum_factor_without_1_and_self(n):
     return sum(factors(n)[1:-1]) - n - 1
 
 
-def is_amicable_numbers(number1: int, number2: int) -> bool:
+def is_amicable_pair(number1: int, number2: int) -> bool:
     temp_number1 = _sum_factor_without_self(number1)
     temp_number2 = _sum_factor_without_self(number2)
     return temp_number1 == number2 and temp_number2 == number1
 
 
-def is_engagements_number(number1: int, number2: int) -> bool:
+def is_betrothed_pair(number1: int, number2: int) -> bool:
     return (
         _sum_factor_without_1_and_self(number1) == number2
         and _sum_factor_without_1_and_self(number2) == number1
     )
 
 
-def is_smith_number(number: int) -> bool:
+def is_smith(number: int) -> bool:
     if number <= 1 or is_prime(number):
         return False
     factors = prime_factors(number)
@@ -140,12 +140,12 @@ def is_smith_number(number: int) -> bool:
     return sum_factors_digits == sum_original_digits
 
 
-def is_niven_number(number: int) -> bool:
+def is_harshad(number: int) -> bool:
     return number % sum(digit_separation(number)) == 0
 
 
-def is_moran_number(number: int) -> bool:
-    if not is_niven_number(number):
+def is_moran(number: int) -> bool:
+    if not is_harshad(number):
         return False
     temp = number // sum(digit_separation(number))
     return is_prime(temp)
@@ -158,7 +158,7 @@ def is_self_power(number: int) -> bool:
     return __builtins__.sum(digit**size for digit in digits) == number
 
 
-def is_narcissus_number(number: int) -> bool:
+def is_narcissistic(number: int) -> bool:
     return len(str(number)) == 3 and is_self_power(number)
 
 

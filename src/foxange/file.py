@@ -98,7 +98,7 @@ def ensure_dir(path: str) -> None:
     os.makedirs(path, exist_ok=True)
 
 
-@deprecated('Use glob.glob() or pathlib.Path() instead')
+@deprecated('Use glob.glob() or pathlib.Path().glob() instead')
 def find_files(
     directory: str, pattern: str = '*', recursive: bool = True
 ) -> List[str]:
