@@ -93,48 +93,12 @@ def get_file_size(path: str, human_readable: bool = False) -> Union[int, str]:
     return f'{size_bytes:.1f} PiB'
 
 
-@deprecated(
-    'Use os.makedirs(path, exist_ok=True) or '
-    'pathlib.Path(path).mkdir(parents=True, exist_ok=True) instead'
-)
+@deprecated('Use os.makedirs() or pathlib.Path().mkdir() instead')
 def ensure_dir(path: str) -> None:
     os.makedirs(path, exist_ok=True)
 
 
-def atomic_write(
-    path: str,
-    data: Union[str, bytes],
-    mode: str = 'w',
-    encoding: str = 'utf-8',
-) -> None:
-    dirname = os.path.dirname(path)
-    if dirname:
-        os.makedirs(dirname, exist_ok=True)
-    fd, tmp_path = os.mkstemp(dir=dirname or '.', text=(mode == 'w'))
-    try:
-        if mode == 'w':
-            data_bytes = (
-                data.encode(encoding) if isinstance(data, str) else data
-            )
-            os.write(fd, data_bytes)
-        else:
-            os.write(
-                fd, data if isinstance(data, bytes) else data.encode(encoding)
-            )
-        os.fsync(fd)
-        os.close(fd)
-        os.replace(tmp_path, path)
-    except Exception:
-        os.close(fd) if not fd.closed else None
-        os.unlink(tmp_path)
-        raise
-
-
-@deprecated(
-    'Use glob.glob(directory + pattern, recursive=recursive) or '
-    'pathlib.Path(directory).glob("**/" + pattern if recursive else pattern) '
-    'instead'
-)
+@deprecated('Use glob.glob() or pathlib.Path() instead')
 def find_files(
     directory: str, pattern: str = '*', recursive: bool = True
 ) -> List[str]:

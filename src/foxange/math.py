@@ -49,13 +49,13 @@ def is_composite_number(number: int) -> bool:
     return any(number % i == 0 for i in range(2, number))
 
 
-def radical_sign(number: int, inx: int = 2) -> float:
+def root(number: int, inx: int = 2) -> float:
     return math.pow(number, (1 / inx))
 
 
-def factor(number: int, key=lambda _: True, recur=False) -> list[int]:
+def factors(number: int, key=lambda _: True, recur=False) -> list[int]:
     ans: list = []
-    limit = int(radical_sign(number)) + 1
+    limit = int(root(number)) + 1
     for i in range(1, limit):
         if number % i == 0:
             if key(i):
@@ -87,7 +87,7 @@ def sum(*value) -> int:
         if isinstance(i, Complex):
             ans += i  # type: ignore
         elif isinstance(i, Iterable):
-            ans += sum(i)
+            ans += __builtins__.sum(i)
     return ans
 
 
@@ -96,26 +96,26 @@ def digit_separation(number: int) -> list[int]:
 
 
 def is_perfect_number(number: int) -> bool:
-    number2 = sum(factor(number))
+    number2 = sum(factors(number))
     return number2 == 2 * number
 
 
 def is_excess_number(number: int) -> bool:
-    number2 = sum(factor(number))
+    number2 = sum(factors(number))
     return number2 > 2 * number
 
 
 def is_deficit(number: int) -> bool:
-    number2 = sum(factor(number))
+    number2 = sum(factors(number))
     return number2 < 2 * number
 
 
 def _sum_factor_without_self(n):
-    return sum(factor(n)[:-1])
+    return sum(factors(n)[:-1])
 
 
 def _sum_factor_without_1_and_self(n):
-    return sum(factor(n)[1:-1]) - n - 1
+    return sum(factors(n)[1:-1]) - n - 1
 
 
 def is_amicable_numbers(number1: int, number2: int) -> bool:
@@ -151,20 +151,18 @@ def is_moran_number(number: int) -> bool:
     return is_prime(temp)
 
 
-def is_self_power_number(number: int) -> bool:
+def is_self_power(number: int) -> bool:
     digits = digit_separation(number)
     size = len(digits)
-    temp = 0
-    for i in digits:
-        temp += math.pow(i, size)
-    return temp == number
+
+    return __builtins__.sum(digit**size for digit in digits) == number
 
 
 def is_narcissus_number(number: int) -> bool:
-    return len(str(number)) == 3 and is_self_power_number(number)
+    return len(str(number)) == 3 and is_self_power(number)
 
 
-def is_palindrome_number(number: int) -> bool:
+def is_palindrome(number: int) -> bool:
     temp = digit_separation(number)
     return temp == temp[::-1]
 

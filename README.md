@@ -113,7 +113,7 @@
 > [!WARNING]
 > v0.5.0 被废弃，请使用 `number1 ** number2` 或 `math.pow()`
 
-- `radical_sign(number: int, inx: int = 2) -> float`
+- `root(number: int, inx: int = 2) -> float`
   
   求 `number` 的 `inx` 次方根（默认平方根）。
 
@@ -122,15 +122,18 @@
   ```python
   import foxange
   
-  print(foxange.math.radical_sign(16))
-  print(foxange.math.radical_sign(27, 3))
+  print(foxange.math.root(16))
+  print(foxange.math.root(27, 3))
   '''
   4.0
   3.0
   '''
   ```
 
-- `factor(number: int, key=lambda x: True, recur: bool = False) -> list[int]`
+> [!CAUTION]
+> v0.5.0 时此函数从`radical_sign()` 更名为 `root()`
+
+- `factors(number: int, key=lambda x: True, recur: bool = False) -> list[int]`
   
   返回 `number` 的所有因子。
 
@@ -145,15 +148,18 @@
   ```python
   import foxange
   
-  print(foxange.math.factor(12))
-  print(foxange.math.factor(12, key=lambda x: x % 2 == 0))
-  print(foxange.math.factor(16, recur=True))
+  print(foxange.math.factors(12))
+  print(foxange.math.factors(12, key=lambda x: x % 2 == 0))
+  print(foxange.math.factors(16, recur=True))
   '''
   [1, 2, 3, 4, 6, 12]
   [2, 4, 6, 12]
   [1, 2, 2, 4, 8, 16]
   '''
   ```
+
+> [!CAUTION]
+> v0.5.0 时此函数从`factor()` 更名为 `factors()`
 
 - `prime_factors(n: int) -> list[int]`
   
@@ -206,7 +212,7 @@
   '''
   ```
 
-- `is_perfect_number(number: int) -> bool`
+- `is_perfect(number: int) -> bool`
   
   判断是否为完全数（真因子和等于自身）。
 
@@ -215,13 +221,16 @@
   ```python
   import foxange
   
-  print(foxange.math.is_perfect_number(6))
-  print(foxange.math.is_perfect_number(12))
+  print(foxange.math.is_perfect(6))
+  print(foxange.math.is_perfect(12))
   '''
   True
   False
   '''
   ```
+
+> [!CAUTION]
+> v0.5.0 时此函数从`is_perfect_number()` 更名为 `is_perfect()`
 
 - `is_excess_number(number: int) -> bool`
   
@@ -332,7 +341,7 @@
   '''
   ```
 
-- `is_self_power_number(number: int) -> bool`
+- `is_self_power(number: int) -> bool`
   
   判断是否为自幂数（每位数字的位数次幂之和等于自身）。
 
@@ -341,13 +350,16 @@
   ```python
   import foxange
   
-  print(foxange.math.is_self_power_number(153))
-  print(foxange.math.is_self_power_number(9474))
+  print(foxange.math.is_self_power(153))
+  print(foxange.math.is_self_power(9474))
   '''
   True
   True
   '''
   ```
+
+> [!CAUTION]
+> v0.5.0 时此函数从`is_self_power_number()` 更名为 `is_self_power()`
 
 - `is_narcissus_number(number: int) -> bool`
   
@@ -366,7 +378,7 @@
   '''
   ```
 
-- `is_palindrome_number(number: int) -> bool`
+- `is_palindrome(number: int) -> bool`
   
   判断是否为回文数。
 
@@ -375,13 +387,16 @@
   ```python
   import foxange
   
-  print(foxange.math.is_palindrome_number(12321))
-  print(foxange.math.is_palindrome_number(12345))
+  print(foxange.math.is_palindrome(12321))
+  print(foxange.math.is_palindrome(12345))
   '''
   True
   False
   '''
   ```
+
+> [!CAUTION]
+> v0.5.0 时此函数从`is_palindrome_number()` 更名为 `is_palindrome()`
 
 - `is_reversible_prime(number: int) -> bool`
   
@@ -688,7 +703,7 @@
 
 > [!WARNING]
 > v0.5.0 被废弃，请使用 `filter()`  
-> 请注意 `filter()` 的过滤逻辑上与此函数相反
+> 请注意 `filter()` 的过滤逻辑上与此函数相反，也就是删除不满足条件的值
 
 - `unique(value: list) -> list`
 
@@ -899,10 +914,11 @@
   ```
 
 > [!WARNING]
-> v0.5.0 被废弃，请使用 `os.makedirs(path, exist_ok=True)` 或 `pathlib.Path(path).mkdir(parents=True, exist_ok=True)`
+> v0.5.0 被废弃，请使用 `os.makedirs()` 或 `pathlib.Path().mkdir()`
 
 - `atomic_write(path: str, data: Union[str, bytes], mode: str = 'w', encoding: str = 'utf-8') -> None`
   原子写入：先写入临时文件，再替换目标文件，避免写入中途崩溃导致文件损坏。
+
   **注意**：Windows 下若目标文件被其他进程打开，`os.replace` 可能失败。
 
   **代码示例**：
@@ -916,7 +932,8 @@
   '''
   ```
 
-  ~~不知意味但也不敢动，我的IDE都爆红了——Cbscfe~~
+> [!CAUTION]
+> v0.5.0 彻底移除此一开始就不能运行起来的函数，这是AI写的吗IDE都爆红了没看到？完全不知道这个函数的用意
 
 - `find_files(directory: str, pattern: str = '*', recursive: bool = True) -> List[str]`
   查找目录下匹配通配符 `pattern` 的文件，返回相对路径列表。支持 `*` 和 `?`（`fnmatch` 规则）。
@@ -934,8 +951,7 @@
   ```
 
 > [!WARNING]
-> v0.5.0 被废弃，请使用 `glob.glob(directory.removesuffix('/') + '/' + pattern, recursive=recursive)` 或 `pathlib.Path(directory).glob("**/" + pattern if recursive else pattern)`  
-> （我服了硬套这个函数的输入格式搞的代码会非常诡异，反正不要硬套就对了）
+> v0.5.0 被废弃，请使用 `glob.glob()` 或 `pathlib.Path().glob()`
 
 ---
 
