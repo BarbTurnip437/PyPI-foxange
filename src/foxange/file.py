@@ -2,6 +2,7 @@ import json
 import os
 from typing import Any, List
 
+
 def ouput_to_file(path, *value, mode='w', end='', sep='\n') -> None:
     all_input_value: str = ''
     for input_value in value:
@@ -83,12 +84,20 @@ def safe_write_json(path: str, data: Any, indent: int = 2) -> None:
         json.dump(data, f, indent=indent, ensure_ascii=False)
 
 
-def format_size(size_bytes: float) -> str:
-    for unit in ['B', 'KiB', 'MiB', 'GiB', 'TiB']:
-        if size_bytes < 1024.0:
-            return f'{size_bytes:.1f} {unit}'
-        size_bytes /= 1024.0
-    return f'{size_bytes:.1f} PiB'
+def format_size(size_bytes: float, *, binary_unit=False) -> str:
+    if binary_unit:
+        unit_set = ('B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'Zib')
+        base = 1024
+    else:
+        unit_set =('B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB')
+        base = 1000
+
+    for unit in unit_set:
+        if abs(size_bytes) < base:
+            return f'{size_bytes:.2f} {unit}'
+        size_bytes /= base
+    else:
+        return f'{size_bytes:.2f} {unit}'  # type: ignore
 
 
 if __name__ == '__main__':

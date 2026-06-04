@@ -24,13 +24,18 @@
 
 ### `__init__.py`
 
+- `version_info: tuple[int, int, int]`
+
+  ***v0.5.0 加入***
+
+  返回一个元组形式的版本，在比较版本号时应当使用 `version_info` 而不是 `__version__`
+
 - `get_help() -> None`
 
   打印 foxange 的 Github 仓库地址
 
 > [!CAUTION]
 > v0.5.0 被移除，请使用 `print(foxange.__doc__)` 或 `help(foxange)`
-
 
 - `version() -> str`
   
@@ -91,21 +96,6 @@
 
 > [!CAUTION]
 > v0.5.0 时此函数从`is_composite_number()` 更名为 `is_composite()`
-
-- `pow(number1: float, number2: float) -> float`
-  
-  幂运算，返回 `number1 ** number2`。
-
-  **代码示例**：
-
-  ```python
-  >>> import foxange
-  >>> foxange.math.pow(2, 3)
-  8
-  ```
-
-> [!WARNING]
-> v0.5.0 被移除，请使用 `number1 ** number2` 或 `math.pow()`
 
 - `root(number: int, inx: int = 2) -> float`
   
@@ -376,36 +366,6 @@
   False
   ```
 
-- `gcd(a: int, b: int) -> int`
-  
-  最大公约数。
-
-  **代码示例**：
-
-  ```python
-  >>> import foxange
-  >>> foxange.math.gcd(48, 18)
-  6
-  ```
-
-> [!CAUTION]
-> v0.5.0 被移除，请使用 `math.gcd()`
-
-- `lcm(a: int, b: int) -> int`
-  
-  最小公倍数。
-
-  **代码示例**：
-
-  ```python
-  >>> import foxange
-  >>> foxange.math.lcm(12, 18)
-  36
-  ```
-
-> [!CAUTION]
-> v0.5.0 被移除，请使用 `math.lcm()`
-
 - `factorial(n: int) -> int`
   
   阶乘。
@@ -417,21 +377,6 @@
   >>> foxange.math.factorial(5)
   120
   ```
-
-- `isqrt(n: int) -> int`
-  
-  整数平方根（向下取整）。
-
-  **代码示例**：
-
-  ```python
-  >>> import foxange
-  >>> foxange.math.isqrt(10)
-  3
-  ```
-  
-> [!CAUTION]
-> v0.5.0 被移除，请使用 `int(math.sqrt())`
 
 - `reverse_int(n: int) -> int`
   
@@ -484,6 +429,66 @@
   >>> foxange.math.digits_count(12345)
   5
   ```
+
+- `pow(number1: float, number2: float) -> float`
+  
+  幂运算，返回 `number1 ** number2`。
+
+  **代码示例**：
+
+  ```python
+  >>> import foxange
+  >>> foxange.math.pow(2, 3)
+  8
+  ```
+
+> [!WARNING]
+> v0.5.0 被移除，请使用 `number1 ** number2` 或 `math.pow()`
+
+- `gcd(a: int, b: int) -> int`
+  
+  最大公约数。
+
+  **代码示例**：
+
+  ```python
+  >>> import foxange
+  >>> foxange.math.gcd(48, 18)
+  6
+  ```
+
+> [!CAUTION]
+> v0.5.0 被移除，请使用 `math.gcd()`
+
+- `lcm(a: int, b: int) -> int`
+  
+  最小公倍数。
+
+  **代码示例**：
+
+  ```python
+  >>> import foxange
+  >>> foxange.math.lcm(12, 18)
+  36
+  ```
+
+> [!CAUTION]
+> v0.5.0 被移除，请使用 `math.lcm()`
+
+- `isqrt(n: int) -> int`
+  
+  整数平方根（向下取整）。
+
+  **代码示例**：
+
+  ```python
+  >>> import foxange
+  >>> foxange.math.isqrt(10)
+  3
+  ```
+  
+> [!CAUTION]
+> v0.5.0 被移除，请使用 `int(math.sqrt())`
 
 - `combination(n: int, k: int) -> int`
   
@@ -600,24 +605,6 @@
 
 ## `list_proce.py`
 
-- `remove(value: list, condition: Callable | None = None) -> list:`
-
-  删除满足条件的值，`condition` 为 `None` 时直接返回原列表
-
-  **代码示例**：
-
-  ```python
-  >>> import foxange
-  >>> foxange.list_proce.remove(value=[1,2,3,4,5,6],condition=lambda x:x%2==0) #删除所有的偶数
-  [1, 3, 5]
-  >>> [*filter(lambda x:x%2==0, [1,2,3,4,5,6])]
-  [2, 4, 6]
-  ```
-
-> [!CAUTION]
-> v0.5.0 被移除，请使用 `filter()`  
-> 请注意 `filter()` 的过滤逻辑上与此函数相反，也就是删除不满足条件的值
-
 - `unique(value: list) -> list`
 
   剔除列表中重复的元素
@@ -667,6 +654,24 @@
   它常用于需要将多个可能嵌套的可迭代对象合并成一个扁平元组的场景。
 
   如果你输入的数据中不会包含不可迭代对象建议使用 `itertools.chain()`
+
+- `remove(value: list, condition: Callable | None = None) -> list:`
+
+  删除满足条件的值，`condition` 为 `None` 时直接返回原列表
+
+  **代码示例**：
+
+  ```python
+  >>> import foxange
+  >>> foxange.list_proce.remove(value=[1,2,3,4,5,6],condition=lambda x:x%2==0) #删除所有的偶数
+  [1, 3, 5]
+  >>> [*filter(lambda x:x%2==0, [1,2,3,4,5,6])]
+  [2, 4, 6]
+  ```
+
+> [!CAUTION]
+> v0.5.0 被移除，请使用 `filter()`  
+> 请注意 `filter()` 的过滤逻辑上与此函数相反，也就是删除不满足条件的值
 
 ## `file.py`
 
@@ -765,9 +770,9 @@
   >>> # (生成 data.json 文件)
   ```
 
-- `format_size(size_bytes: float) -> str`
+- `format_size(size_bytes: float, *, binary_unit=False) -> str`
   
-  在 v0.5.0 加入
+  ***v0.5.0 加入***
 
   将传入的字节数格式化为一个更易读的格式
 
@@ -776,7 +781,9 @@
   ```python
   >>> import foxange
   >>> foxange.file.format_size(114514)
-  '111.8 KiB'
+  '114.51 KB'
+  >>> foxange.file.format_size(1919810, binary_unit=True)
+  '1.83 MiB'
   ```
 
 - `get_file_size(path: str, human_readable: bool = False) -> Union[int, str]`
@@ -815,11 +822,6 @@
 > [!CAUTION]
 > v0.5.0 被移除，请使用 `os.makedirs()` 或 `pathlib.Path().mkdir()`
 
-- `atomic_write(path: str, data: Union[str, bytes], mode: str = 'w', encoding: str = 'utf-8') -> None`
-
-> [!WARNING]
-> v0.5.0 彻底移除此一开始就不能运行起来的函数。完全不知道这个函数的用意
-
 - `find_files(directory: str, pattern: str = '*', recursive: bool = True) -> List[str]`
 
   查找目录下匹配通配符 `pattern` 的文件，返回相对路径列表。支持 `*` 和 `?`（`fnmatch` 规则）。
@@ -834,6 +836,11 @@
 
 > [!CAUTION]
 > v0.5.0 被移除，请使用 `glob.glob()` 或 `pathlib.Path().glob()`
+
+- `atomic_write(path: str, data: Union[str, bytes], mode: str = 'w', encoding: str = 'utf-8') -> None`
+
+> [!WARNING]
+> v0.5.0 彻底移除此一开始就不能运行起来的函数。完全不知道这个函数的用意
 
 ---
 
