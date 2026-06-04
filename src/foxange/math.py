@@ -149,13 +149,6 @@ def is_reversible_prime(number: int) -> bool:
     return rev != number and is_prime(rev)
 
 
-def factorial(n: int) -> int:
-    result = 1
-    for i in range(2, n + 1):
-        result *= i
-    return result
-
-
 def reverse_int(n: int) -> int:
     sign = -1 if n < 0 else 1
     return sign * int(str(abs(n))[::-1])

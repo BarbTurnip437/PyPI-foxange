@@ -366,18 +366,6 @@
   False
   ```
 
-- `factorial(n: int) -> int`
-  
-  阶乘。
-
-  **代码示例**：
-
-  ```python
-  >>> import foxange
-  >>> foxange.math.factorial(5)
-  120
-  ```
-
 - `reverse_int(n: int) -> int`
   
   反转整数，保留符号。
@@ -429,6 +417,21 @@
   >>> foxange.math.digits_count(12345)
   5
   ```
+
+- `factorial(n: int) -> int`
+  
+  阶乘。
+
+  **代码示例**：
+
+  ```python
+  >>> import foxange
+  >>> foxange.math.factorial(5)
+  120
+  ```
+
+> [!CAUTION]
+> v0.5.0 被移除，请使用 `math.factorial()`
 
 - `pow(number1: float, number2: float) -> float`
   
@@ -786,9 +789,9 @@
   '1.83 MiB'
   ```
 
-- `get_file_size(path: str, human_readable: bool = False) -> Union[int, str]`
+- `get_file_size(path: str, human_readable: bool = False) -> Union[int, str]`  
 
-  返回文件大小（字节）。若 `human_readable=True`，转换为 B/KiB/MiB 等易读格式。
+  返回文件大小（字节）。若 `human_readable=True`，转换为 B/KB/MB 等易读格式。
 
   **代码示例**：
 
@@ -803,7 +806,7 @@
 > [!CAUTION]
 > v0.5.0 被移除，请使用 `os.path.getsize()` 或 `pathlib.Path().stat().st_size`  
 > 如果要达成跟原来 `human_readable` 等于 `True` 的效果，可以将得到的结果传入 `format_size()`  
-> ~~我永远不会告诉你废弃的真实原因是因为类型注解不好写~~
+> ~~我永远不会告诉你移除的真实原因是因为类型注解不好写~~
 
 - `ensure_dir(path: str) -> None`
 
