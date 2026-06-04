@@ -1,17 +1,4 @@
-from collections.abc import Callable, Collection
-from warnings import deprecated
-
-
-@deprecated(
-    'Use filter() instead, '
-    'beware that filter() behaves opposite as this function '
-    'and returns an iterable instead of a list'
-)
-def remove(value: list, condition: Callable | None = None) -> list:
-    # 这个函数太诡异了我要回家
-    if condition is None:
-        return value
-    return [*filter(lambda x: not condition(x), value)]
+from collections.abc import Collection
 
 
 # @deprecated(
@@ -39,8 +26,5 @@ def spread(*args) -> tuple:
 
 
 if __name__ == '__main__':
-    print('test remove:')
-    print(f'return value: {remove([1, 2, 3, 4, 5], lambda x: x % 2 == 0) = }')
-    print()
     print('test unique:')
     print(f'return value: {unique([1, 2, 3, 1, 2]) = }')

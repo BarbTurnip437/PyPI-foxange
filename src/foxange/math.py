@@ -3,35 +3,6 @@ from collections.abc import Iterable
 from math import sqrt
 from numbers import Complex
 from typing import Generator
-from warnings import deprecated
-
-
-@deprecated('Use math.gcd() instead')
-def gcd(a: int, b: int) -> int:
-    return math.gcd(a, b)
-
-
-@deprecated('Use math.lcm() instead')
-def lcm(a: int, b: int) -> int:
-    return math.lcm(a, b)
-
-
-@deprecated('Use math.comb() instead')
-def combination(n: int, k: int) -> int:
-    try:
-        return math.comb(n, k)
-    except ValueError:
-        return 0
-
-
-@deprecated('Use number1**number2 instead')
-def pow(number1: float, number2: float) -> float:
-    return number1**number2
-
-
-@deprecated('Use int(math.sqrt()) instead')
-def isqrt(n: int) -> int:
-    return int(math.sqrt(n))
 
 
 def is_prime(number: int) -> bool:

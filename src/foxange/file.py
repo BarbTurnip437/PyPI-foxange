@@ -1,9 +1,6 @@
-import glob
 import json
 import os
-from typing import Any, List, Union
-from warnings import deprecated
-
+from typing import Any, List
 
 def ouput_to_file(path, *value, mode='w', end='', sep='\n') -> None:
     all_input_value: str = ''
@@ -92,33 +89,6 @@ def format_size(size_bytes: float) -> str:
             return f'{size_bytes:.1f} {unit}'
         size_bytes /= 1024.0
     return f'{size_bytes:.1f} PiB'
-
-
-@deprecated(
-    'Use os.path.getsize() or '
-    'pathlib.Path().stat().st_size instead. '
-    'To achieve the same effect as the original human_readable=True, '
-    'you can pass the result into format_size()'
-)
-def get_file_size(path: str, human_readable: bool = False) -> Union[int, str]:
-    size_bytes = os.path.getsize(path)
-    if not human_readable:
-        return size_bytes
-    return format_size(size_bytes)
-
-
-@deprecated('Use os.makedirs() or pathlib.Path().mkdir() instead')
-def ensure_dir(path: str) -> None:
-    os.makedirs(path, exist_ok=True)
-
-
-@deprecated('Use glob.glob() or pathlib.Path().glob() instead')
-def find_files(
-    directory: str, pattern: str = '*', recursive: bool = True
-) -> List[str]:
-    return glob.glob(
-        directory.removesuffix('/') + '/' + pattern, recursive=recursive
-    )
 
 
 if __name__ == '__main__':

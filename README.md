@@ -28,8 +28,8 @@
 
   打印 foxange 的 Github 仓库地址
 
-> [!WARNING]
-> v0.5.0 被废弃，请使用 `print(foxange.__doc__)` 或 `help(foxange)`
+> [!CAUTION]
+> v0.5.0 被移除，请使用 `print(foxange.__doc__)` 或 `help(foxange)`
 
 
 - `version() -> str`
@@ -50,8 +50,8 @@
 > [!IMPORTANT]
 > v0.4.0 开始这个函数不会输出 `version : {version}` 文字了
 
-> [!WARNING]
-> v0.5.0 被废弃，请使用 `__version__`
+> [!CAUTION]
+> v0.5.0 被移除，请使用 `__version__`
 
 ------
 
@@ -105,7 +105,7 @@
   ```
 
 > [!WARNING]
-> v0.5.0 被废弃，请使用 `number1 ** number2` 或 `math.pow()`
+> v0.5.0 被移除，请使用 `number1 ** number2` 或 `math.pow()`
 
 - `root(number: int, inx: int = 2) -> float`
   
@@ -388,8 +388,8 @@
   6
   ```
 
-> [!WARNING]
-> v0.5.0 被废弃，请使用 `math.gcd()`
+> [!CAUTION]
+> v0.5.0 被移除，请使用 `math.gcd()`
 
 - `lcm(a: int, b: int) -> int`
   
@@ -403,8 +403,8 @@
   36
   ```
 
-> [!WARNING]
-> v0.5.0 被废弃，请使用 `math.lcm()`
+> [!CAUTION]
+> v0.5.0 被移除，请使用 `math.lcm()`
 
 - `factorial(n: int) -> int`
   
@@ -430,8 +430,8 @@
   3
   ```
   
-> [!WARNING]
-> v0.5.0 被废弃，请使用 `int(math.sqrt())`
+> [!CAUTION]
+> v0.5.0 被移除，请使用 `int(math.sqrt())`
 
 - `reverse_int(n: int) -> int`
   
@@ -497,8 +497,8 @@
   10
   ```
 
-> [!WARNING]
-> v0.5.0 被废弃，请使用 `math.comb()`
+> [!CAUTION]
+> v0.5.0 被移除，请使用 `math.comb()`
 
 ## `input.py`
 
@@ -614,8 +614,8 @@
   [2, 4, 6]
   ```
 
-> [!WARNING]
-> v0.5.0 被废弃，请使用 `filter()`  
+> [!CAUTION]
+> v0.5.0 被移除，请使用 `filter()`  
 > 请注意 `filter()` 的过滤逻辑上与此函数相反，也就是删除不满足条件的值
 
 - `unique(value: list) -> list`
@@ -793,8 +793,8 @@
   '12.0 B'
   ```
 
-> [!WARNING]
-> v0.5.0 被废弃，请使用 `os.path.getsize()` 或 `pathlib.Path().stat().st_size`  
+> [!CAUTION]
+> v0.5.0 被移除，请使用 `os.path.getsize()` 或 `pathlib.Path().stat().st_size`  
 > 如果要达成跟原来 `human_readable` 等于 `True` 的效果，可以将得到的结果传入 `format_size()`  
 > ~~我永远不会告诉你废弃的真实原因是因为类型注解不好写~~
 
@@ -812,8 +812,8 @@
   '''
   ```
 
-> [!WARNING]
-> v0.5.0 被废弃，请使用 `os.makedirs()` 或 `pathlib.Path().mkdir()`
+> [!CAUTION]
+> v0.5.0 被移除，请使用 `os.makedirs()` 或 `pathlib.Path().mkdir()`
 
 - `atomic_write(path: str, data: Union[str, bytes], mode: str = 'w', encoding: str = 'utf-8') -> None`
 
@@ -832,8 +832,8 @@
   ['input.py', 'list_proce.py', 'math.py', 'file.py', ...]
   ```
 
-> [!WARNING]
-> v0.5.0 被废弃，请使用 `glob.glob()` 或 `pathlib.Path().glob()`
+> [!CAUTION]
+> v0.5.0 被移除，请使用 `glob.glob()` 或 `pathlib.Path().glob()`
 
 ---
 
