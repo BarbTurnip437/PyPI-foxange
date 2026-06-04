@@ -45,8 +45,8 @@ def choice_input(
 
 def confirm(
     text='',
-    yes_str: str | tuple[str] = ('y',),
-    no_str: str | tuple[str] = ('n',),
+    yes_str: str | tuple[str] = 'y',
+    no_str: str | tuple[str] = 'n',
 ) -> bool | None:
     string = input(text + f'[{yes_str[0]}/{no_str[0]}] ').lower().strip()
     if string.startswith(yes_str):
@@ -68,7 +68,7 @@ if __name__ == '__main__':
     print(f"return value: {lenth_limited_input('> ', 10, 20) = }")
     print()
     print('test choice_input:')
-    print(f"return value: {choice_input(None, ['a', 'b', 'c'], '> ') = }")
+    print(f"return value: {choice_input(['a', 'b', 'c'], None, '> ') = }")
     print()
     print('test confirm:')
     print(f'return value: {confirm() = }')

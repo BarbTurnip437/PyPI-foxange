@@ -66,12 +66,16 @@ def head(path: str, n: int = 10, encoding: str = 'utf-8') -> List[str]:
     return lines
 
 
-def safe_read_json(path: str, default: Any = None) -> Any:
+def safe_read_json(
+    path: str, fallback: Any = None, writeback: bool = False
+) -> Any:
     try:
         with open(path, 'r', encoding='utf-8') as f:
             return json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
-        return default
+        if writeback:
+            safe_write_json(path, fallback)
+        return fallback
 
 
 def safe_write_json(path: str, data: Any, indent: int = 2) -> None:
@@ -82,15 +86,25 @@ def safe_write_json(path: str, data: Any, indent: int = 2) -> None:
         json.dump(data, f, indent=indent, ensure_ascii=False)
 
 
-def get_file_size(path: str, human_readable: bool = False) -> Union[int, str]:
-    size_bytes = os.path.getsize(path)
-    if not human_readable:
-        return size_bytes
+def format_size(size_bytes: float) -> str:
     for unit in ['B', 'KiB', 'MiB', 'GiB', 'TiB']:
         if size_bytes < 1024.0:
             return f'{size_bytes:.1f} {unit}'
         size_bytes /= 1024.0
     return f'{size_bytes:.1f} PiB'
+
+
+@deprecated(
+    'Use os.path.getsize() or '
+    'pathlib.Path().stat().st_size instead. '
+    'To achieve the same effect as the original human_readable=True, '
+    'you can pass the result into format_size()'
+)
+def get_file_size(path: str, human_readable: bool = False) -> Union[int, str]:
+    size_bytes = os.path.getsize(path)
+    if not human_readable:
+        return size_bytes
+    return format_size(size_bytes)
 
 
 @deprecated('Use os.makedirs() or pathlib.Path().mkdir() instead')

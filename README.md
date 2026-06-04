@@ -26,7 +26,7 @@
 
 - `get_help() -> None`
 
-  显示 foxange 的 Github 仓库地址
+  打印 foxange 的 Github 仓库地址
 
 > [!WARNING]
 > v0.5.0 被废弃，请使用 `print(foxange.__doc__)` 或 `help(foxange)`
@@ -64,14 +64,11 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  print(foxange.math.is_prime(7))
-  print(foxange.math.is_prime(10))
-  '''
+  >>> import foxange
+  >>> foxange.math.is_prime(7)
   True
+  >>> foxange.math.is_prime(10)
   False
-  '''
   ```
 
 > [!IMPORTANT]
@@ -85,14 +82,11 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  print(foxange.math.is_composite(9))
-  print(foxange.math.is_composite(2))
-  '''
+  >>> import foxange
+  >>> foxange.math.is_composite(9)
   True
+  >>> foxange.math.is_composite(2)
   False
-  '''
   ```
 
 > [!CAUTION]
@@ -105,12 +99,9 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  print(foxange.math.pow(2, 3))
-  '''
-  8.0
-  '''
+  >>> import foxange
+  >>> foxange.math.pow(2, 3)
+  8
   ```
 
 > [!WARNING]
@@ -123,45 +114,34 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  print(foxange.math.root(16))
-  print(foxange.math.root(27, 3))
-  '''
+  >>> import foxange
+  >>> foxange.math.root(16)
   4.0
+  >>> foxange.math.root(27, 3)
   3.0
-  '''
   ```
 
 > [!CAUTION]
 > v0.5.0 时此函数从`radical_sign()` 更名为 `root()`
 
-- `factors(number: int, key=lambda x: True, recur: bool = False) -> list[int]`
+- `factors(number: int, recur: bool = False) -> Generator[int]`
   
-  返回 `number` 的所有因子。
+  生成 `number` 的所有因子。
 
-  - `key`：过滤函数，只有 `key(i)` 为 `True` 的因子才加入。
-  - `recur`：若为 `True`，平方根因子会被添加两次（`i` 和 `j` 都加入）。
-  
-  **注意** : `recur=True` 会使完全平方数的平方根因子出现两次。
+  - `recur`：若为 `True`，使完全平方数的平方根因子被生成两次（`i` 和 `j` 都加入）。
   
   **代码示例**：
 
   ```python
-  import foxange
-  
-  print(foxange.math.factors(12))
-  print(foxange.math.factors(12, key=lambda x: x % 2 == 0))
-  print(foxange.math.factors(16, recur=True))
-  '''
-  [1, 2, 3, 4, 6, 12]
-  [2, 4, 6, 12]
-  [1, 2, 2, 4, 8, 16]
-  '''
+  >>> import foxange
+  >>> [*foxange.math.factors(12)]
+  [1, 12, 2, 6, 3, 4]
+  >>> [*foxange.math.factors(16, recur=True)]
+  [1, 16, 2, 8, 4, 4]
   ```
 
 > [!CAUTION]
-> v0.5.0 时此函数从`factor()` 更名为 `factors()`
+> v0.5.0 移除了 `key` 参数，且现在返回一个迭代器而不是列表。并从 `factor()` 更名为 `factors()`
 
 - `prime_factors(n: int) -> list[int]`
   
@@ -170,14 +150,11 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  print(foxange.math.prime_factors(12))
-  print(foxange.math.prime_factors(18))
-  '''
-  [2, 2, 3]
-  [2, 3, 3]
-  '''
+  >>> import foxange
+  >>> foxange.math.prime_factors(12)
+  [2, 3, 4]
+  >>> foxange.math.prime_factors(18)
+  [2, 3, 3, 2]
   ```
 
 - `deep_sum(*values)`
@@ -187,34 +164,28 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  print(foxange.math.deep_sum(1, 2, [3, 4], 5))
-  '''
+  >>> import foxange
+  >>> foxange.math.deep_sum(1, 2, [3, 4], 5)
   15
-  '''
   ```
 
-  如果你输入的数据中不会包含不可迭代对象建议使用 `sum(itertools.chain())` （内置的sum）
+  如果你输入的数据中不会包含不可迭代对象建议使用 `sum(itertools.chain())`
 
   ~~有点hyw了这个函数想把它删了但是不太敢——Cbscfe~~
 
 > [!CAUTION]
 > v0.5.0 时此函数从`sum()` 更名为 `deep_sum()`
 
-- `digit_separation(number: int) -> list`
+- `digit_separation(number: int) -> list[int]`
   
   将整数按位拆分为数字列表。
 
   **代码示例**：
 
   ```python
-  import foxange
-  
-  print(foxange.math.digit_separation(12345))
-  '''
+  >>> import foxange
+  >>> foxange.math.digit_separation(12345)
   [1, 2, 3, 4, 5]
-  '''
   ```
 
 - `is_perfect(number: int) -> bool`
@@ -224,14 +195,11 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  print(foxange.math.is_perfect(6))
-  print(foxange.math.is_perfect(12))
-  '''
+  >>> import foxange
+  >>> foxange.math.is_perfect(6)
   True
+  >>> foxange.math.is_perfect(12)
   False
-  '''
   ```
 
 > [!CAUTION]
@@ -244,12 +212,9 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  print(foxange.math.is_excess(12))
-  '''
+  >>> import foxange
+  >>> foxange.math.is_excess(12)
   True
-  '''
   ```
 
 > [!CAUTION]
@@ -262,12 +227,9 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  print(foxange.math.is_deficit(4))
-  '''
+  >>> import foxange
+  >>> foxange.math.is_deficit(4)
   True
-  '''
   ```
 
 - `is_amicable_pair(number1: int, number2: int) -> bool`
@@ -277,12 +239,9 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  print(foxange.math.is_amicable_pair(220, 284))
-  '''
+  >>> import foxange
+  >>> foxange.math.is_amicable_pair(220, 284)
   True
-  '''
   ```
 
 > [!CAUTION]
@@ -295,12 +254,9 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  print(foxange.math.is_betrothed_pair(48, 75))
-  '''
+  >>> import foxange
+  >>> foxange.math.is_betrothed_pair(48, 75)
   True
-  '''
   ```
 
 > [!CAUTION]
@@ -313,14 +269,11 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  print(foxange.math.is_smith(4))
-  print(foxange.math.is_smith(22))
-  '''
+  >>> import foxange
+  >>> foxange.math.is_smith(4)
   True
+  >>> foxange.math.is_smith(22)  
   False
-  '''
   ```
 
 > [!CAUTION]
@@ -333,12 +286,9 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  print(foxange.math.is_harshad(18))
-  '''
+  >>> import foxange
+  >>> foxange.math.is_harshad(18)
   True
-  '''
   ```
 
 > [!CAUTION]
@@ -351,14 +301,11 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  print(foxange.math.is_moran(18))
-  print(foxange.math.is_moran(27))
-  '''
+  >>> import foxange
+  >>> foxange.math.is_moran(18)
   False
+  >>> foxange.math.is_moran(27)
   True
-  '''
   ```
 
 > [!CAUTION]
@@ -371,14 +318,11 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  print(foxange.math.is_self_power(153))
-  print(foxange.math.is_self_power(9474))
-  '''
+  >>> import foxange
+  >>> foxange.math.is_self_power(153)
   True
+  >>> foxange.math.is_self_power(9474)
   True
-  '''
   ```
 
 > [!CAUTION]
@@ -391,14 +335,11 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  print(foxange.math.is_narcissistic(153))
-  print(foxange.math.is_narcissistic(9474))
-  '''
+  >>> import foxange
+  >>> foxange.math.is_narcissistic(153)
   True
+  >>> foxange.math.is_narcissistic(9474)
   False
-  '''
   ```
 
 > [!CAUTION]
@@ -411,14 +352,11 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  print(foxange.math.is_palindrome(12321))
-  print(foxange.math.is_palindrome(12345))
-  '''
+  >>> import foxange
+  >>> foxange.math.is_palindrome(12321)
   True
+  >>> foxange.math.is_palindrome(12345)
   False
-  '''
   ```
 
 > [!CAUTION]
@@ -431,14 +369,11 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  print(foxange.math.is_reversible_prime(13))
-  print(foxange.math.is_reversible_prime(11))
-  '''
+  >>> import foxange
+  >>> foxange.math.is_reversible_prime(13)
   True
+  >>> foxange.math.is_reversible_prime(11)
   False
-  '''
   ```
 
 - `gcd(a: int, b: int) -> int`
@@ -448,12 +383,9 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  print(foxange.math.gcd(48, 18))
-  '''
+  >>> import foxange
+  >>> foxange.math.gcd(48, 18)
   6
-  '''
   ```
 
 > [!WARNING]
@@ -466,12 +398,9 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  print(foxange.math.lcm(12, 18))
-  '''
+  >>> import foxange
+  >>> foxange.math.lcm(12, 18)
   36
-  '''
   ```
 
 > [!WARNING]
@@ -484,12 +413,9 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  print(foxange.math.factorial(5))
-  '''
+  >>> import foxange
+  >>> foxange.math.factorial(5)
   120
-  '''
   ```
 
 - `isqrt(n: int) -> int`
@@ -499,12 +425,9 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  print(foxange.math.isqrt(10))
-  '''
+  >>> import foxange
+  >>> foxange.math.isqrt(10)
   3
-  '''
   ```
   
 > [!WARNING]
@@ -517,14 +440,11 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  print(foxange.math.reverse_int(12345))
-  print(foxange.math.reverse_int(-678))
-  '''
+  >>> import foxange
+  >>> foxange.math.reverse_int(12345)
   54321
+  >>> foxange.math.reverse_int(-678)
   -876
-  '''
   ```
 
 - `bin_to_int(bin_str: str) -> int`
@@ -534,12 +454,9 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  print(foxange.math.bin_to_int("1010"))
-  '''
+  >>> import foxange
+  >>> foxange.math.bin_to_int("1010")
   10
-  '''
   ```
 
 - `int_to_bin(n: int) -> str`
@@ -549,12 +466,9 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  print(foxange.math.int_to_bin(10))
-  '''
-  "1010"
-  '''
+  >>> import foxange
+  >>> foxange.math.int_to_bin(10)
+  '1010'
   ```
 
 - `digits_count(n: int) -> int`
@@ -564,14 +478,11 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  print(foxange.math.digits_count(0))
-  print(foxange.math.digits_count(12345))
-  '''
+  >>> import foxange
+  >>> foxange.math.digits_count(0)
   1
+  >>> foxange.math.digits_count(12345)
   5
-  '''
   ```
 
 - `combination(n: int, k: int) -> int`
@@ -581,12 +492,9 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  print(foxange.math.combination(5, 2))
-  '''
+  >>> import foxange
+  >>> foxange.math.combination(5, 2)
   10
-  '''
   ```
 
 > [!WARNING]
@@ -601,14 +509,11 @@
   **代码示例**：
 
   ```python
-  import foxange
-
-  print(foxange.input.collect_input("name> ", "age> "))
-  '''
+  >>> import foxange
+  >>> foxange.input.collect_input("name> ", "age> ")
   name> 张三
   age> 20
   ['张三' , '20']
-  '''
   ```
 
 - `filter_string(text: str, *strings: str, replace_value: str = '') -> str`
@@ -618,16 +523,13 @@
   **代码示例**：
 
   ```python
-  import foxange
-
-  print(foxange.input.filter_string('hello world!', 'h', 'o'))
-  '''
+  >>> import foxange
+  >>> foxange.input.filter_string('hello world!', 'h', 'o')
   ell wrld!
-  '''
   ```
 
 > [!CAUTION]
-> v0.5.0 增加了一个关键字参数 `replace_value` 表示要替换为的值，并从 `sanitize_input()` 更名为 `filter_string()`
+> v0.5.0 增加了一个关键字参数 `replace_value` 表示要替换为的值。并从 `sanitize_input()` 更名为 `filter_string()`
 
 - `lenth_limited_input[T](text, min, max, fallback: T = None) -> str | None | T`
 
@@ -636,21 +538,18 @@
   **代码示例**：
 
   ```python
-  import foxange
-  foxange.input.numeric_input(
+  >>> import foxangefoxange.input.numeric_input(
       "请输入一个长度小于等于1大于等于5的字符串> ", 
       1, 
       5, 
       "你输入错了!😠",
   )
-  '''
   请输入一个长度小于等于1大于等于5的字符串> 4874964345465488
-  你输入错了!😠
-  '''
+  '你输入错了!😠'
   ```
 
 > [!CAUTION]
-> v0.5.0 时 `notvalid` 参数更名为 `fallback`，并从 `numeric_input()` 更名为 `lenth_limited_input()`
+> v0.5.0 时 `notvalid` 参数更名为 `fallback`。并从 `numeric_input()` 更名为 `lenth_limited_input()`
 
 - `choice_input(options: Sequence, title = None, input_text: str = "> ") -> tuple[int, str] | tuple[None, None]`
   
@@ -666,15 +565,13 @@
   **代码示例**：
 
   ```python
-  import foxange
-  print(foxange.input.choive_input(['hi','bye'], "菜单", "选择> "))
-  '''
+  >>> import foxange
+  >>> foxange.input.choive_input(['hi', 'bye'], "菜单", "选择> ")
   菜单
   1. hi
   2. bye
-  选择>1
-  [0,'hi']
-  '''
+  选择> 1
+  [0, 'hi']
   ```
 
   ~~我都不知道这个东西有什么用~~  
@@ -683,7 +580,7 @@
 > [!CAUTION]
 > v0.5.0 时参数从 `title, value, input_text` 改为 `options, title, input_text`
 
-- `confirm(text='', yes_str: str | tuple[str] = ('y',), no_str: str | tuple[str] = ('n',)) -> bool | None`:
+- `confirm(text='', yes_str: str | tuple[str] = 'y', no_str: str | tuple[str] = 'n') -> bool | None`:
 
   一个类似于tkinter.askyesno的东西
 
@@ -692,13 +589,10 @@
   **代码示例**：
 
   ```python
-  import foxange
-
-  print(foxange.input.confirm("你确定要退出吗?",yes_str=["yes",'y'],no_str=['no','n']))
-  '''
-  你确定要退出吗?[yes/no] yes
+  >>> import foxange
+  >>> foxange.input.confirm("你确定要退出吗? ", yes_str=('yes', 'y'), no_str=('no', 'n'))
+  你确定要退出吗? [yes/no] yes
   True
-  '''
   ```
 
 > [!CAUTION]
@@ -713,12 +607,11 @@
   **代码示例**：
 
   ```python
-  import foxange
-
-  print(foxange.list_proce.remove(value=[1,2,3,4,5,6],condition=lambda x:x%2==0)) #删除所有的偶数
-  '''
-  [1,3,5]
-  '''
+  >>> import foxange
+  >>> foxange.list_proce.remove(value=[1,2,3,4,5,6],condition=lambda x:x%2==0) #删除所有的偶数
+  [1, 3, 5]
+  >>> [*filter(lambda x:x%2==0, [1,2,3,4,5,6])]
+  [2, 4, 6]
   ```
 
 > [!WARNING]
@@ -736,28 +629,24 @@
   **代码示例**：
 
   ```python
-  import foxange
-  print(foxange.list_proce.unique([1,1,2,3]))
-  '''
-  [1,2,3]
-  '''
+  >>> import foxange
+  >>> foxange.list_proce.unique([1,1,2,3])
+  [1, 2, 3]
   ```
 
 - `rotate(value: list, inx: int) -> list:`
 
   将列表`value`向右旋`inx`步数
 
+  **注意** : **如果旋转步数是 0 或列表长度的整数倍，则返回原列表的副本**
+
   **代码示例**：
 
   ```python
-  import foxange
-  print(foxange.list_proce.rotate([1,2,3,4],1))
-  '''
-  [4,1,2,3]
-  '''
+  >>> import foxange
+  >>> foxange.list_proce.rotate([1,2,3,4],1)
+  [4, 1, 2, 3]
   ```
-
-  **注意** : **如果旋转步数是 0 或列表长度的整数倍，则返回原列表的副本**
 
 - `spread(*args) -> tuple`
 
@@ -771,13 +660,8 @@
   **代码示例**：
 
   ```python
-  from foxange.list_proce import spread
-  
-  result = spread([1, 2], 3, (4, 5), "hello")
-  print(result)  
-  '''
+  >>> spread([1, 2], 3, (4, 5), "hello")
   (1, 2, 3, 4, 5, 'hello')
-  '''
   ```
 
   它常用于需要将多个可能嵌套的可迭代对象合并成一个扁平元组的场景。
@@ -793,13 +677,10 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  foxange.file.ouput_to_file("test.txt", "hello", "world", sep=",", end="!")
-  # 文件内容: hello,world!
-  '''
-  (无返回值，文件被写入)
-  '''
+  >>> import foxange
+  >>> foxange.file.ouput_to_file("test.txt", "hello", "world", sep=",", end="!")
+  None
+  >>> # 文件内容: hello,world!
   ```
 
 > [!CAUTION]
@@ -812,13 +693,9 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  lines = foxange.file.read_lines("test.txt")
-  print(lines)
-  '''
+  >>> import foxange
+  >>> foxange.file.read_lines("test.txt")
   ['hello,world!']
-  '''
   ```
 
 - `write_lines(path: str, lines: List[str], mode: str = 'w', encoding: str = 'utf-8') -> None`
@@ -828,12 +705,10 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  foxange.file.write_lines("output.txt", ["first", "second"], mode='w')
-  '''
-  (文件 output.txt 包含两行: first 和 second)
-  '''
+  >>> import foxange
+  >>> foxange.file.write_lines("output.txt", ["first", "second"])
+  None
+  >>> # (文件 output.txt 包含两行: first 和 second)
   ```
 
 - `tail(path: str, n: int = 10, encoding: str = 'utf-8') -> List[str]`
@@ -843,13 +718,9 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  last = foxange.file.tail("test.txt", n=1)
-  print(last)
-  '''
+  >>> import foxange
+  >>> foxange.file.tail("test.txt", 1)
   ['hello,world!']
-  '''
   ```
 
 - `head(path: str, n: int = 10, encoding: str = 'utf-8') -> List[str]`
@@ -859,30 +730,27 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  first = foxange.file.head("test.txt", n=1)
-  print(first)
-  '''
+  >>> import foxange
+  >>> foxange.file.head("test.txt", 1)
   ['hello,world!']
-  '''
   ```
 
-- `safe_read_json(path: str, default: Any = None) -> Any`
+- `safe_read_json(path: str, fallback: Any = None, writeback: bool = False) -> Any`
 
-  安全读取 JSON 文件。若文件不存在或 JSON 无效，返回 `default`。
+  安全读取 JSON 文件。若文件不存在或 JSON 无效，返回 `fallback`。
+
+  如果 `writeback` 为 `True` 则会将 `fallback` 的内容写入文件
 
   **代码示例**：
 
   ```python
-  import foxange
-  
-  data = foxange.file.safe_read_json("config.json", default={})
-  print(data)
-  '''
-  {}   (假设文件不存在或无效)
-  '''
-  ```  
+  >>> import foxange
+  >>> data = foxange.file.safe_read_json("config.json")  # (假设文件不存在或无效)
+  None
+  ```
+
+> [!WARNING]
+> v0.5.0 `default` 参数改名为 `fallback`
 
 - `safe_write_json(path: str, data: Any, indent: int = 2) -> None`
 
@@ -891,12 +759,24 @@
   **代码示例**：
 
   ```python
-  import foxange
+  >>> import foxange
+  >>> foxange.file.safe_write_json("data.json", {"name": "foxange", "version": "0.4.0"})
+  None
+  >>> # (生成 data.json 文件)
+  ```
+
+- `format_size(size_bytes: float) -> str`
   
-  foxange.file.safe_write_json("data.json", {"name": "foxange", "version": "0.4.0"})
-  '''
-  (生成 data.json 文件)
-  '''
+  在 v0.5.0 加入
+
+  将传入的字节数格式化为一个更易读的格式
+
+  **代码示例**：
+
+  ```python
+  >>> import foxange
+  >>> foxange.file.format_size(114514)
+  '111.8 KiB'
   ```
 
 - `get_file_size(path: str, human_readable: bool = False) -> Union[int, str]`
@@ -906,20 +786,17 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  size = foxange.file.get_file_size("test.txt")
-  print(size)
-  size_hr = foxange.file.get_file_size("test.txt", human_readable=True)
-  print(size_hr)
-  '''
+  >>> import foxange
+  >>> foxange.file.get_file_size("test.txt")
   12
+  >>> foxange.file.get_file_size("test.txt", human_readable=True)
   '12.0 B'
-  '''
   ```
 
-> [!NOTE]
-> v0.5.0 修复了显示的单位错误的使用了 KB/MB/GB... 而不是 KiB/MiB/GiB 的bug
+> [!WARNING]
+> v0.5.0 被废弃，请使用 `os.path.getsize()` 或 `pathlib.Path().stat().st_size`  
+> 如果要达成跟原来 `human_readable` 等于 `True` 的效果，可以将得到的结果传入 `format_size()`  
+> ~~我永远不会告诉你废弃的真实原因是因为类型注解不好写~~
 
 - `ensure_dir(path: str) -> None`
 
@@ -928,8 +805,7 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
+  >>> import foxange
   foxange.file.ensure_dir("./new_folder/sub")
   '''
   (目录被创建，无返回值)
@@ -941,23 +817,8 @@
 
 - `atomic_write(path: str, data: Union[str, bytes], mode: str = 'w', encoding: str = 'utf-8') -> None`
 
-  原子写入：先写入临时文件，再替换目标文件，避免写入中途崩溃导致文件损坏。
-
-  **注意**：Windows 下若目标文件被其他进程打开，`os.replace` 可能失败。
-
-  **代码示例**：
-
-  ```python
-  import foxange
-  
-  foxange.file.atomic_write("important.txt", "critical data")
-  '''
-  (文件被安全写入)
-  '''
-  ```
-
-> [!CAUTION]
-> v0.5.0 彻底移除此一开始就不能运行起来的函数，这是AI写的吗IDE都爆红了没看到？完全不知道这个函数的用意
+> [!WARNING]
+> v0.5.0 彻底移除此一开始就不能运行起来的函数。完全不知道这个函数的用意
 
 - `find_files(directory: str, pattern: str = '*', recursive: bool = True) -> List[str]`
 
@@ -966,13 +827,9 @@
   **代码示例**：
 
   ```python
-  import foxange
-  
-  all_py = foxange.file.find_files(".", "*.py", recursive=True)
-  print(all_py)
-  '''
+  >>> import foxange
+  >>> foxange.file.find_files(".", "*.py", recursive=True)
   ['input.py', 'list_proce.py', 'math.py', 'file.py', ...]
-  '''
   ```
 
 > [!WARNING]

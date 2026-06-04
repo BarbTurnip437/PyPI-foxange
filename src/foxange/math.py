@@ -2,6 +2,7 @@ import math
 from collections.abc import Iterable
 from math import sqrt
 from numbers import Complex
+from typing import Generator
 from warnings import deprecated
 
 
@@ -53,11 +54,14 @@ def root(number: int, inx: int = 2) -> float:
     return math.pow(number, (1 / inx))
 
 
-def factors(number: int, recur=False) -> list[int]:
+def factors(number: int, recur=False) -> Generator[int]:
     limit = int(root(number)) + 1
-    ans = [i for i in range(1, limit) if number % i == 0]
-    ans.extend([j for i in ans if i != (j := number // i) or recur])
-    return ans
+    for i in range(1, limit):
+        if number % i == 0:
+            yield i
+            j = number // i
+            if i != j or recur:
+                yield j
 
 
 def prime_factors(n: int) -> list[int]:
@@ -90,6 +94,12 @@ def digit_separation(number: int) -> list[int]:
 
 
 def is_perfect(number: int) -> bool:
+    """
+    >>> is_perfect(6)
+    True
+    >>> is_perfect(12)
+    False
+    """
     number2 = sum(factors(number))
     return number2 == 2 * number
 
@@ -193,16 +203,6 @@ def digits_count(n) -> int:
 
 
 if __name__ == '__main__':
-    import math
-    import time
+    import doctest
 
-    start = time.time()
-    print("math's", math.pow(10, 34))
-    end = time.time()
-    print(end - start)
-    start = 0
-    end = 0
-    start = time.time()
-    print("foxange's", pow(10, 34))
-    end = time.time()
-    print(end - start)
+    doctest.testmod()
