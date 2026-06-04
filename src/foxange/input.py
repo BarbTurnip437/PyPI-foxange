@@ -48,7 +48,7 @@ def confirm(
     yes_str: str | tuple[str] = 'y',
     no_str: str | tuple[str] = 'n',
 ) -> bool | None:
-    string = input(text + f'[{yes_str[0]}/{no_str[0]}] ').lower().strip()
+    string = input(f'{text} [{yes_str[0]}/{no_str[0]}] ').lower().strip()
     if string.startswith(yes_str):
         return True
     elif string.startswith(no_str):

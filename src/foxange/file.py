@@ -89,7 +89,7 @@ def format_size(size_bytes: float, *, binary_unit=False) -> str:
         unit_set = ('B', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'Zib')
         base = 1024
     else:
-        unit_set =('B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB')
+        unit_set = ('B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB')
         base = 1000
 
     for unit in unit_set:

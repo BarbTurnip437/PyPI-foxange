@@ -62,6 +62,42 @@
 
 ## `math.py`
 
+- `root(number: int, inx: int = 2) -> float`
+  
+  求 `number` 的 `inx` 次方根（默认平方根）。
+
+  **代码示例**：
+
+  ```python
+  >>> root(16)
+  4.0
+  >>> root(27, 3)
+  3.0
+  >>> root(256, 4)
+  4.0
+  ```
+
+> [!CAUTION]
+> v0.5.0 时此函数从`radical_sign()` 更名为 `root()`
+
+- `factors(number: int, recur: bool = False) -> Generator[int]`
+  
+  生成 `number` 的所有因子。
+
+  - `recur`：若为 `True`，使完全平方数的平方根因子被生成两次（`i` 和 `j` 都加入）。
+  
+  **代码示例**：
+
+  ```python
+  >>> [*factors(12)]
+  [1, 12, 2, 6, 3, 4]
+  >>> [*factors(16, recur=True)]
+  [1, 16, 2, 8, 4, 4]
+  ```
+
+> [!CAUTION]
+> v0.5.0 移除了 `key` 参数，且现在返回一个迭代器而不是列表。并从 `factor()` 更名为 `factors()`
+
 - `is_prime(number: int) -> bool`
   
   判断一个整数是否为素数。
@@ -69,10 +105,9 @@
   **代码示例**：
 
   ```python
-  >>> import foxange
-  >>> foxange.math.is_prime(7)
+  >>> is_prime(7)
   True
-  >>> foxange.math.is_prime(10)
+  >>> is_prime(10)
   False
   ```
 
@@ -96,42 +131,6 @@
 
 > [!CAUTION]
 > v0.5.0 时此函数从`is_composite_number()` 更名为 `is_composite()`
-
-- `root(number: int, inx: int = 2) -> float`
-  
-  求 `number` 的 `inx` 次方根（默认平方根）。
-
-  **代码示例**：
-
-  ```python
-  >>> import foxange
-  >>> foxange.math.root(16)
-  4.0
-  >>> foxange.math.root(27, 3)
-  3.0
-  ```
-
-> [!CAUTION]
-> v0.5.0 时此函数从`radical_sign()` 更名为 `root()`
-
-- `factors(number: int, recur: bool = False) -> Generator[int]`
-  
-  生成 `number` 的所有因子。
-
-  - `recur`：若为 `True`，使完全平方数的平方根因子被生成两次（`i` 和 `j` 都加入）。
-  
-  **代码示例**：
-
-  ```python
-  >>> import foxange
-  >>> [*foxange.math.factors(12)]
-  [1, 12, 2, 6, 3, 4]
-  >>> [*foxange.math.factors(16, recur=True)]
-  [1, 16, 2, 8, 4, 4]
-  ```
-
-> [!CAUTION]
-> v0.5.0 移除了 `key` 参数，且现在返回一个迭代器而不是列表。并从 `factor()` 更名为 `factors()`
 
 - `prime_factors(n: int) -> list[int]`
   
@@ -445,7 +444,7 @@
   8
   ```
 
-> [!WARNING]
+> [!CAUTION]
 > v0.5.0 被移除，请使用 `number1 ** number2` 或 `math.pow()`
 
 - `gcd(a: int, b: int) -> int`
@@ -491,7 +490,7 @@
   ```
   
 > [!CAUTION]
-> v0.5.0 被移除，请使用 `int(math.sqrt())`
+> v0.5.0 被移除，请使用 `math.isqrt()`
 
 - `combination(n: int, k: int) -> int`
   
@@ -598,7 +597,7 @@
 
   ```python
   >>> import foxange
-  >>> foxange.input.confirm("你确定要退出吗? ", yes_str=('yes', 'y'), no_str=('no', 'n'))
+  >>> foxange.input.confirm("你确定要退出吗?", yes_str=('yes', 'y'), no_str=('no', 'n'))
   你确定要退出吗? [yes/no] yes
   True
   ```
@@ -804,7 +803,7 @@
   ```
 
 > [!CAUTION]
-> v0.5.0 被移除，请使用 `os.path.getsize()` 或 `pathlib.Path().stat().st_size`  
+> v0.5.0 被移除，请使用 `pathlib.Path().stat().st_size` 或 `os.path.getsize()`  
 > 如果要达成跟原来 `human_readable` 等于 `True` 的效果，可以将得到的结果传入 `format_size()`  
 > ~~我永远不会告诉你移除的真实原因是因为类型注解不好写~~
 
@@ -823,7 +822,7 @@
   ```
 
 > [!CAUTION]
-> v0.5.0 被移除，请使用 `os.makedirs()` 或 `pathlib.Path().mkdir()`
+> v0.5.0 被移除，请使用 `pathlib.Path().mkdir()` 或 `os.makedirs()`
 
 - `find_files(directory: str, pattern: str = '*', recursive: bool = True) -> List[str]`
 
@@ -838,7 +837,7 @@
   ```
 
 > [!CAUTION]
-> v0.5.0 被移除，请使用 `glob.glob()` 或 `pathlib.Path().glob()`
+> v0.5.0 被移除，请使用 `pathlib.Path().glob()` 或 `glob.glob()`
 
 - `atomic_write(path: str, data: Union[str, bytes], mode: str = 'w', encoding: str = 'utf-8') -> None`
 

@@ -1,32 +1,28 @@
 import math
-from collections.abc import Iterable
-from math import sqrt
-from numbers import Complex
+from collections.abc import Collection
 from typing import Generator
 
 
-def is_prime(number: int) -> bool:
-    if number <= 1:
-        return False
-    if number % 2 == 0:
-        return False
-
-    return all(number % i != 0 for i in range(3, int(sqrt(number)), 2))
-
-
-def is_composite(number: int) -> bool:
-    if number <= 1:
-        return False
-
-    return any(number % i == 0 for i in range(2, number))
-
-
 def root(number: int, inx: int = 2) -> float:
+    """
+    >>> root(16)
+    4.0
+    >>> root(27, 3)
+    3.0
+    >>> root(256, 4)
+    4.0
+    """
     return math.pow(number, (1 / inx))
 
 
 def factors(number: int, recur=False) -> Generator[int]:
-    limit = int(root(number)) + 1
+    """
+    >>> [*factors(12)]
+    [1, 12, 2, 6, 3, 4]
+    >>> [*factors(16, recur=True)]
+    [1, 16, 2, 8, 4, 4]
+    """
+    limit = math.isqrt(number) + 1
     for i in range(1, limit):
         if number % i == 0:
             yield i
@@ -53,11 +49,50 @@ def prime_factors(n: int) -> list[int]:
 def deep_sum(*value) -> int:
     ans: int = 0
     for i in value:
-        if isinstance(i, Complex):
-            ans += i  # type: ignore
-        elif isinstance(i, Iterable):
-            ans += __builtins__.sum(i)
+        if isinstance(i, Collection):
+            ans += sum(i)
+        else:
+            ans += i
     return ans
+
+
+def reverse_int(n: int) -> int:
+    sign = -1 if n < 0 else 1
+    return sign * int(str(abs(n))[::-1])
+
+
+def bin_to_int(n: str) -> int:
+    return int(n, 2)
+
+
+def int_to_bin(n: int) -> str:
+    return f'{n:b}'
+
+
+def digits_count(n) -> int:
+    return len(str(n))
+
+
+def is_prime(number: int) -> bool:
+    """
+    >>> is_prime(7)
+    True
+    >>> is_prime(10)
+    False
+    """
+    if number <= 1:
+        return False
+    if number % 2 == 0:
+        return False
+
+    return all(number % i != 0 for i in range(3, math.isqrt(number), 2))
+
+
+def is_composite(number: int) -> bool:
+    if number <= 1:
+        return False
+
+    return any(number % i == 0 for i in range(2, number))
 
 
 def digit_separation(number: int) -> list[int]:
@@ -85,11 +120,11 @@ def is_deficit(number: int) -> bool:
     return number2 < 2 * number
 
 
-def _sum_factor_without_self(n):
+def _sum_factor_without_self(n: int) -> int:
     return sum(factors(n)) - n
 
 
-def _sum_factor_without_1_and_self(n):
+def _sum_factor_without_1_and_self(n: int) -> int:
     return sum(factors(n)) - n - 1
 
 
@@ -149,24 +184,7 @@ def is_reversible_prime(number: int) -> bool:
     return rev != number and is_prime(rev)
 
 
-def reverse_int(n: int) -> int:
-    sign = -1 if n < 0 else 1
-    return sign * int(str(abs(n))[::-1])
-
-
-def bin_to_int(n: str) -> int:
-    return int(n, 2)
-
-
-def int_to_bin(n: int) -> str:
-    return f'{n:b}'
-
-
-def digits_count(n) -> int:
-    return len(str(n))
-
-
 if __name__ == '__main__':
     import doctest
 
-    doctest.testmod()
+    doctest.testmod(verbose=True)
