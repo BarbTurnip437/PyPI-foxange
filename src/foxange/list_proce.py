@@ -1,11 +1,11 @@
-from collections.abc import Collection
+from collections.abc import Collection, Hashable, Iterable
 
 
 # @deprecated(
 #     'If you want to create a container with no overlapping items '
 #     'you should use a set'
 # )
-def unique(value: list) -> list:
+def unique(value: Iterable[Hashable]) -> list:
     return list(set(value))
 
 

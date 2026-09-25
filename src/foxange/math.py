@@ -1,6 +1,5 @@
 import math
-from collections.abc import Collection
-from typing import Generator
+from typing import Generator, Iterable
 
 
 def root(number: int, inx: int = 2) -> float:
@@ -49,7 +48,7 @@ def prime_factors(n: int) -> list[int]:
 def deep_sum(*value) -> int:
     ans: int = 0
     for i in value:
-        if isinstance(i, Collection):
+        if isinstance(i, Iterable):
             ans += sum(i)
         else:
             ans += i

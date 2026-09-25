@@ -24,18 +24,12 @@
 
 ### `__init__.py`
 
-- `version_info: tuple[int, int, int]`
-
-  ***v0.5.0 加入***
+ - `version_info: tuple[int, int, int]`
 
   返回一个元组形式的版本，在比较版本号时应当使用 `version_info` 而不是 `__version__`
 
-- `get_help() -> None`
-
-  打印 foxange 的 Github 仓库地址
-
-> [!CAUTION]
-> v0.5.0 被移除，请使用 `print(foxange.__doc__)` 或 `help(foxange)`
+> [!NOTE]
+> v0.5.0 加入
 
 - `version() -> str`
   
@@ -57,6 +51,13 @@
 
 > [!CAUTION]
 > v0.5.0 被移除，请使用 `__version__`
+
+- `get_help() -> None`
+
+  打印 foxange 的 Github 仓库地址
+
+> [!CAUTION]
+> v0.5.0 被移除，请使用 `print(foxange.__doc__)` 或 `help(foxange)`
 
 ------
 
@@ -97,6 +98,58 @@
 
 > [!CAUTION]
 > v0.5.0 移除了 `key` 参数，且现在返回一个迭代器而不是列表。并从 `factor()` 更名为 `factors()`
+
+- `reverse_int(n: int) -> int`
+  
+  反转整数，保留符号。
+
+  **代码示例**：
+
+  ```python
+  >>> import foxange
+  >>> foxange.math.reverse_int(12345)
+  54321
+  >>> foxange.math.reverse_int(-678)
+  -876
+  ```
+
+- `bin_to_int(bin_str: str) -> int`
+  
+  二进制字符串转整数。
+
+  **代码示例**：
+
+  ```python
+  >>> import foxange
+  >>> foxange.math.bin_to_int("1010")
+  10
+  ```
+
+- `int_to_bin(n: int) -> str`
+  
+  整数转二进制字符串（不带 `0b` 前缀）。
+
+  **代码示例**：
+
+  ```python
+  >>> import foxange
+  >>> foxange.math.int_to_bin(10)
+  '1010'
+  ```
+
+- `digits_count(n: int) -> int`
+  
+  返回整数的位数（0 算 1 位）。
+
+  **代码示例**：
+
+  ```python
+  >>> import foxange
+  >>> foxange.math.digits_count(0)
+  1
+  >>> foxange.math.digits_count(12345)
+  5
+  ```
 
 - `is_prime(number: int) -> bool`
   
@@ -363,58 +416,6 @@
   True
   >>> foxange.math.is_reversible_prime(11)
   False
-  ```
-
-- `reverse_int(n: int) -> int`
-  
-  反转整数，保留符号。
-
-  **代码示例**：
-
-  ```python
-  >>> import foxange
-  >>> foxange.math.reverse_int(12345)
-  54321
-  >>> foxange.math.reverse_int(-678)
-  -876
-  ```
-
-- `bin_to_int(bin_str: str) -> int`
-  
-  二进制字符串转整数。
-
-  **代码示例**：
-
-  ```python
-  >>> import foxange
-  >>> foxange.math.bin_to_int("1010")
-  10
-  ```
-
-- `int_to_bin(n: int) -> str`
-  
-  整数转二进制字符串（不带 `0b` 前缀）。
-
-  **代码示例**：
-
-  ```python
-  >>> import foxange
-  >>> foxange.math.int_to_bin(10)
-  '1010'
-  ```
-
-- `digits_count(n: int) -> int`
-  
-  返回整数的位数（0 算 1 位）。
-
-  **代码示例**：
-
-  ```python
-  >>> import foxange
-  >>> foxange.math.digits_count(0)
-  1
-  >>> foxange.math.digits_count(12345)
-  5
   ```
 
 - `factorial(n: int) -> int`
@@ -773,8 +774,6 @@
   ```
 
 - `format_size(size_bytes: float, *, binary_unit=False) -> str`
-  
-  ***v0.5.0 加入***
 
   将传入的字节数格式化为一个更易读的格式
 
@@ -787,6 +786,9 @@
   >>> foxange.file.format_size(1919810, binary_unit=True)
   '1.83 MiB'
   ```
+  
+> [!NOTE]
+> v0.5.0 加入
 
 - `get_file_size(path: str, human_readable: bool = False) -> Union[int, str]`  
 
@@ -841,18 +843,30 @@
 
 - `atomic_write(path: str, data: Union[str, bytes], mode: str = 'w', encoding: str = 'utf-8') -> None`
 
-> [!WARNING]
+> [!IMPORTANT]
 > v0.5.0 彻底移除此一开始就不能运行起来的函数。完全不知道这个函数的用意
 
 ---
 
 ## 声明和其他
 
-如果你发现了问题，请在Github仓库提交问题。
-
-发送格式: `函数`   `问题`    `你的代号` 我们会在这个文件里记录你的名字,从而感谢你对foxange第三方库的贡献和支持!
+如果你发现了问题，请在Github仓库提交问题。我们会在这个文件里记录你的名字，以感谢你对foxange第三方库的贡献和支持!
 
 **foxange** 第三方库开源github链接 - <https://github.com/foxange-org/PyPI-foxange>
+
+对于函数的更改在文档标注上的等级为
+
+> [!NOTE]
+> 修 bug / 没有任何向后兼容问题的更改
+
+> [!IMPORTANT]
+> 有一点向后兼容问题的更改
+
+> [!WARNING]
+> 有较大向后兼容问题的更改
+
+> [!CAUTION]
+> Breaking Change!
 
 ---
 
